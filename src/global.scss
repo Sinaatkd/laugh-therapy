@@ -27,8 +27,8 @@
 
 
 @font-face {
-    font-family: 'IRAN-SANS';
-    src: url('./assets/fonts/Sans\ a4fran3.ttf');
+    font-family: 'KALAMEH-MEDIUM';
+    src: url('./assets/fonts/Kalameh-Medium.ttf');
 }
 
 @font-face {
@@ -37,8 +37,9 @@
 }
 
 * {
-    --ion-font-family: 'IRAN-SANS'
+    --ion-font-family: 'KALAMEH-MEDIUM'
 }
+
 
 ion-content,
 ion-toolbar {
