@@ -1,0 +1,7 @@
+{
+  "name": "laugh-therapy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
