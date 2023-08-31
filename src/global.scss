@@ -24,3 +24,23 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+@font-face {
+    font-family: 'IRAN-SANS';
+    src: url('./assets/fonts/Sans\ a4fran3.ttf');
+}
+
+@font-face {
+    font-family: 'KALAMEH-BOLD';
+    src: url('./assets/fonts/Kalameh-Bold.ttf');
+}
+
+* {
+    --ion-font-family: 'IRAN-SANS'
+}
+
+ion-content,
+ion-toolbar {
+    --background: var(--ion-color-light);
+}
