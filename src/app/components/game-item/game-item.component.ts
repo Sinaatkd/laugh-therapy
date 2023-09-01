@@ -10,6 +10,7 @@ export class GameItemComponent  implements OnInit {
   @Input('title') title?: string;
   @Input('description') description?: string;
   @Input('imageAddress') imageAddress?: string;
+  @Input('gamePageAddress') gamePageAddress?: string;
   
   constructor() { }
 
