@@ -1,7 +1,7 @@
 <ion-card>
-  <ion-img src="../../../assets/test.jpg"></ion-img>
+  <ion-img [src]="imageAddress"></ion-img>
   <ion-card-header>
-    <ion-card-title>بازی بادکنک</ion-card-title>
+    <ion-card-title>{{ title }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <ion-accordion-group>
@@ -9,7 +9,7 @@
         <ion-item slot="header">
           <ion-label>توضیحات</ion-label>
         </ion-item>
-        <div class="ion-padding" slot="content">اینجا توضیحات بازیه</div>
+        <div class="ion-padding" slot="content">{{ description }}</div>
       </ion-accordion>
     </ion-accordion-group>
   </ion-card-content>
