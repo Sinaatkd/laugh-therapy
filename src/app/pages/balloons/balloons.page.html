@@ -1,6 +1,7 @@
 <ion-content [scrollY]="false" [scrollX]="false">
   <div class="score">بادکنک های ترکیده شده: {{ counter }}</div>
   <div class="balloon-container" #balloonsContainer>
-    <div class="balloon" *ngFor="let balloonIndex of balloonsIndex" (click)="balloonBurst(balloonEl, balloonIndex)" #balloonEl></div>
+    <div class="balloon" *ngFor="let balloonIndex of balloonsIndex" (click)="balloonBurst(balloonEl, balloonIndex)"
+      #balloonEl></div>
   </div>
 </ion-content>

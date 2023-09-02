@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { BalloonsPageRoutingModule } from './balloons-routing.module';
 
 import { BalloonsPage } from './balloons.page';
+import { SharedModule } from 'src/app/components/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BalloonsPageRoutingModule
+    BalloonsPageRoutingModule,
+    SharedModule
   ],
   declarations: [BalloonsPage]
 })

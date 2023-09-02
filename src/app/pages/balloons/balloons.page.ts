@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { BalloonWinComponent } from 'src/app/components/balloon-win/balloon-win.component';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,7 +14,7 @@ export class BalloonsPage implements OnInit {
   counter = 0;
 
   constructor(
-    private alertCtrl: AlertController
+    private modalCtrl: ModalController
   ) {
   }
 
@@ -27,7 +28,14 @@ export class BalloonsPage implements OnInit {
       this.counter += 1;
       balloonEl.style.opacity = '0';
       if (balloonIndex == this.fullBalloonIndex) {
-        
+        this.modalCtrl.create({
+          component: BalloonWinComponent,
+          breakpoints: [0.7],
+          initialBreakpoint: 0.7,
+          mode: 'ios'
+        }).then(modalEl => {
+          modalEl.present();
+        })
       }
     }
   }
