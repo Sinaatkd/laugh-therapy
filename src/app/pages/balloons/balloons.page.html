@@ -1,13 +1,6 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>balloons</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">balloons</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [scrollY]="false" [scrollX]="false">
+  <div class="score">بادکنک های ترکیده شده: {{ counter }}</div>
+  <div class="balloon-container" #balloonsContainer>
+    <div class="balloon" *ngFor="let balloonIndex of balloonsIndex" (click)="balloonBurst(balloonEl, balloonIndex)" #balloonEl></div>
+  </div>
 </ion-content>
