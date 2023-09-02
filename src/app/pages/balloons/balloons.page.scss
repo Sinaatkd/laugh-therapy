@@ -23,13 +23,13 @@
 .balloon {
     $num-colors: 11;
     height: 125px;
-    width: 105px;
+    width: 95px;
     border-radius: 75% 75% 70% 70%;
     position: relative;
 
     @for $i from 0 to $num-colors {
         &:nth-child(#{$i}) {
-            $randomNumber: random(5) + 15;
+            $randomNumber: random(5) + 8;
             $mt: random(200);
             $ml: random(50);
             @include random-bgr();
@@ -59,7 +59,7 @@
     display: block;
     position: absolute;
     color: inherit;
-    top: 120px;
+    top: 115px;
     left: 0;
     right: 0;
     margin: auto;

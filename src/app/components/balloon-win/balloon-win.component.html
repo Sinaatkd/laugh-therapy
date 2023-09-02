@@ -1,5 +1,11 @@
-<ion-content>
-  <ion-text color="primary">
-    هووورا تونستی پیداش کنی
-  </ion-text>
+<ion-content class="ion-padding">
+    <ion-img [src]="imageAddress + randomImageName"></ion-img>
+    <ion-text class="ion-margin-top">تبریک میگم</ion-text>
+    <ion-text>
+        <p>تو تونستی با {{ counter }} بار تلاش پیداش کنی</p>
+    </ion-text>
+
+    <ion-button expand="block" (click)="backToHomePage()">
+        رفتن به صفحه اصلی
+    </ion-button>
 </ion-content>

@@ -18,8 +18,7 @@ export class BalloonsPage implements OnInit {
   ) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   balloonBurst(balloonEl: HTMLElement, balloonIndex: number) {
     if (balloonEl.style.opacity !== '0') {
@@ -28,15 +27,23 @@ export class BalloonsPage implements OnInit {
       this.counter += 1;
       balloonEl.style.opacity = '0';
       if (balloonIndex == this.fullBalloonIndex) {
-        this.modalCtrl.create({
-          component: BalloonWinComponent,
-          breakpoints: [0.7],
-          initialBreakpoint: 0.7,
-          mode: 'ios'
-        }).then(modalEl => {
-          modalEl.present();
-        })
+        this.openBalloonWinModal();
       }
     }
+  }
+
+  openBalloonWinModal() {
+    this.modalCtrl.create({
+      component: BalloonWinComponent,
+      breakpoints: [0.4, 0.5, 0.6, 0.7],
+      initialBreakpoint: 0.4,
+      backdropDismiss: false,
+      mode: 'ios',
+      componentProps: {
+        counter: this.counter
+      }
+    }).then(modalEl => {
+      modalEl.present();
+    })
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-balloon-win',
@@ -7,8 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BalloonWinComponent  implements OnInit {
 
-  constructor() { }
+  @Input('counter') counter?: number;
+  randomImageNumber = Math.floor(Math.random() * 10);
+  imageAddress = '../../../assets/images/cartoon-character/'
+  randomImageName = `${this.randomImageNumber}.png`;
+  
+  constructor(
+    private navCtrl: NavController,
+    private modalCtrl: ModalController
+  ) { }
 
   ngOnInit() {}
 
+  backToHomePage() {
+    this.modalCtrl.dismiss().then(_ => {
+      this.navCtrl.navigateBack('/').then();
+    })
+  }
 }
