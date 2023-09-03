@@ -9,3 +9,9 @@ ion-accordion {
 ion-button {
     --border-radius: 0 0 30px 30px;
 }
+
+ion-img {
+    width: 100%;
+    height: 250px !important;
+    object-fit: cover;
+}

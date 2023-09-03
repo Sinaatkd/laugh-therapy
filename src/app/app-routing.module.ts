@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'balloons',
     loadChildren: () => import('./pages/balloons/balloons.module').then( m => m.BalloonsPageModule)
   },
+  {
+    path: 'destroy-bad-cell',
+    loadChildren: () => import('./destroy-bad-cell/destroy-bad-cell.module').then( m => m.DestroyBadCellPageModule)
+  },
 ];
 
 @NgModule({
