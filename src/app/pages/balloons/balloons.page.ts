@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { BalloonWinComponent } from 'src/app/components/balloon-win/balloon-win.component';
 import { environment } from 'src/environments/environment';
 
@@ -9,16 +9,77 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./balloons.page.scss'],
 })
 export class BalloonsPage implements OnInit {
+  characters = [
+    {
+      id: 0,
+      image: '../../../assets/images/cartoon-character/0.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 1,
+      image: '../../../assets/images/cartoon-character/1.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 2,
+      image: '../../../assets/images/cartoon-character/2.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 3,
+      image: '../../../assets/images/cartoon-character/3.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 4,
+      image: '../../../assets/images/cartoon-character/4.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 5,
+      image: '../../../assets/images/cartoon-character/5.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 6,
+      image: '../../../assets/images/cartoon-character/6.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 7,
+      image: '../../../assets/images/cartoon-character/7.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 8,
+      image: '../../../assets/images/cartoon-character/8.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+    {
+      id: 9,
+      image: '../../../assets/images/cartoon-character/9.png',
+      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+    },
+
+
+  ]
   balloonsIndex = [...Array(environment.BALLOON_COUNT).keys()];
-  fullBalloonIndex = Math.floor(Math.random() * environment.BALLOON_COUNT)
+  correctBalloonIndex = Math.floor(Math.random() * environment.BALLOON_COUNT);
   counter = 0;
+  selectedCharacter = this.characters.find(character => character.id === this.correctBalloonIndex);
+  selectedCharacterSound = new Audio(this.selectedCharacter?.sound)
 
   constructor(
-    private modalCtrl: ModalController
-  ) {
+    private modalCtrl: ModalController,
+    private navCtrl: NavController
+  ) { }
+
+  ngOnInit() {
   }
 
-  ngOnInit() { }
+  ionViewDidEnter() {
+    this.playSelectedCharacterSound();
+  }
 
   balloonBurst(balloonEl: HTMLElement, balloonIndex: number) {
     if (balloonEl.style.opacity !== '0') {
@@ -26,7 +87,7 @@ export class BalloonsPage implements OnInit {
       audio.play().then();
       this.counter += 1;
       balloonEl.style.opacity = '0';
-      if (balloonIndex == this.fullBalloonIndex) {
+      if (balloonIndex == this.correctBalloonIndex) {
         this.openBalloonWinModal();
       }
     }
@@ -40,10 +101,24 @@ export class BalloonsPage implements OnInit {
       backdropDismiss: false,
       mode: 'ios',
       componentProps: {
-        counter: this.counter
+        counter: this.counter,
+        characterImage: this.selectedCharacter?.image
       }
     }).then(modalEl => {
       modalEl.present();
     })
+  }
+
+  playSelectedCharacterSound() {
+    this.selectedCharacterSound.play().then();
+  }
+
+  backToHomePage() {
+    this.selectedCharacterSound.pause();
+    this.navCtrl.navigateBack('/home');
+  }
+
+  getCharacterImageByIndex(balloonIndex: number) {
+    return this.characters.find(character => character.id === balloonIndex)?.image;
   }
 }
