@@ -76,8 +76,7 @@ export class BalloonsPage implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   balloonBurst(balloonEl: HTMLElement, balloonIndex: number) {
     if (balloonEl.style.opacity !== '0') {
@@ -92,8 +91,8 @@ export class BalloonsPage implements OnInit {
     }
   }
 
-  openBalloonWinModal() {
-    this.modalCtrl.create({
+  async openBalloonWinModal() {
+    const winModal = await this.modalCtrl.create({
       component: BalloonWinComponent,
       breakpoints: [0.4, 0.5, 0.6, 0.7],
       initialBreakpoint: 0.4,
@@ -103,9 +102,11 @@ export class BalloonsPage implements OnInit {
         counter: this.counter,
         characterImage: this.selectedCharacter?.image
       }
-    }).then(modalEl => {
-      modalEl.present();
     })
+    winModal.onDidDismiss().then((data) => {
+      this.resetGame();
+    })
+    return await winModal.present();
   }
 
   stopCharacterSound() {

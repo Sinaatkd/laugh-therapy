@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-balloon-win',
@@ -13,7 +13,6 @@ export class BalloonWinComponent implements OnInit {
   audio = new Audio('../../../assets/sounds/sounds-effect/Win-Effect.mp3');
 
   constructor(
-    private navCtrl: NavController,
     private modalCtrl: ModalController
   ) { }
 
@@ -21,9 +20,8 @@ export class BalloonWinComponent implements OnInit {
     this.audio.play();
   }
 
-  backToHomePage() {
+  continueGame() {
     this.modalCtrl.dismiss().then(_ => {
-      this.navCtrl.navigateBack('/').then();
       this.audio.pause();
     })
   }
