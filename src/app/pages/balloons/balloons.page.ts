@@ -13,52 +13,52 @@ export class BalloonsPage implements OnInit {
     {
       id: 0,
       image: '../../../assets/images/cartoon-character/0.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/0.mp3',
     },
     {
       id: 1,
       image: '../../../assets/images/cartoon-character/1.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/1.mp3',
     },
     {
       id: 2,
       image: '../../../assets/images/cartoon-character/2.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/2.mp3',
     },
     {
       id: 3,
       image: '../../../assets/images/cartoon-character/3.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/3.mp3',
     },
     {
       id: 4,
       image: '../../../assets/images/cartoon-character/4.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/4.mp3',
     },
     {
       id: 5,
       image: '../../../assets/images/cartoon-character/5.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/5.mp3',
     },
     {
       id: 6,
       image: '../../../assets/images/cartoon-character/6.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/6.mp3',
     },
     {
       id: 7,
       image: '../../../assets/images/cartoon-character/7.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/7.mp3',
     },
     {
       id: 8,
       image: '../../../assets/images/cartoon-character/8.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/8.mp3',
     },
     {
       id: 9,
       image: '../../../assets/images/cartoon-character/9.png',
-      sound: '../../../assets/sounds/laugh/laugh1.mp3',
+      sound: '../../../assets/sounds/characters-sound/9.mp3',
     },
 
 
@@ -88,6 +88,7 @@ export class BalloonsPage implements OnInit {
       this.counter += 1;
       balloonEl.style.opacity = '0';
       if (balloonIndex == this.correctBalloonIndex) {
+        this.selectedCharacterSound.pause();
         this.openBalloonWinModal();
       }
     }
