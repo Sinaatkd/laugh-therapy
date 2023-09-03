@@ -5,7 +5,7 @@
         <div class="score center-item">تعداد تلاش: {{ counter }}</div>
       </ion-col>
       <ion-col size="3">
-        <ion-button (click)="playSelectedCharacterSound()" mode="ios">
+        <ion-button (click)="resetGame()" mode="ios">
           <ion-icon slot="icon-only" name="repeat"></ion-icon>
         </ion-button>
       </ion-col>
@@ -22,4 +22,8 @@
       <img [src]="getCharacterImageByIndex(balloonIndex)" class="center-item" />
     </div>
   </div>
+
+  <audio loop class="ion-hide" autoplay *ngIf="selectedCharacter" #CharacterSoundAudioEl>
+    <source [src]="selectedCharacter.sound">
+  </audio>
 </ion-content>

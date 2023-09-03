@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { BalloonWinComponent } from 'src/app/components/balloon-win/balloon-win.component';
 import { environment } from 'src/environments/environment';
@@ -67,18 +68,15 @@ export class BalloonsPage implements OnInit {
   correctBalloonIndex = Math.floor(Math.random() * environment.BALLOON_COUNT);
   counter = 0;
   selectedCharacter = this.characters.find(character => character.id === this.correctBalloonIndex);
-  selectedCharacterSound = new Audio(this.selectedCharacter?.sound)
+  @ViewChild('CharacterSoundAudioEl') CharacterSoundAudioEl?: ElementRef<HTMLAudioElement>
 
   constructor(
     private modalCtrl: ModalController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private router: Router
   ) { }
 
   ngOnInit() {
-  }
-
-  ionViewDidEnter() {
-    this.playSelectedCharacterSound();
   }
 
   balloonBurst(balloonEl: HTMLElement, balloonIndex: number) {
@@ -88,7 +86,7 @@ export class BalloonsPage implements OnInit {
       this.counter += 1;
       balloonEl.style.opacity = '0';
       if (balloonIndex == this.correctBalloonIndex) {
-        this.selectedCharacterSound.pause();
+        this.stopCharacterSound();
         this.openBalloonWinModal();
       }
     }
@@ -110,16 +108,20 @@ export class BalloonsPage implements OnInit {
     })
   }
 
-  playSelectedCharacterSound() {
-    this.selectedCharacterSound.play().then();
+  stopCharacterSound() {
+    this.CharacterSoundAudioEl?.nativeElement.pause();
   }
 
   backToHomePage() {
-    this.selectedCharacterSound.pause();
+    this.stopCharacterSound();
     this.navCtrl.navigateBack('/home');
   }
 
   getCharacterImageByIndex(balloonIndex: number) {
     return this.characters.find(character => character.id === balloonIndex)?.image;
+  }
+
+  resetGame() {
+    window.location.reload();
   }
 }
