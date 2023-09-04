@@ -35,6 +35,11 @@ ion-img {
     animation: moveLeftRight 4s linear infinite;
 }
 
+.spaceship {
+    width: 60px;
+    height: 60px;
+}
+
 @keyframes moveBottom {
     0% {
         transform: translateY(0);

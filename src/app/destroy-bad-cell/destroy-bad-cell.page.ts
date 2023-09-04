@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { WeightedRandomPicker } from '../utilities/randomWeightedNumber';
 
 @Component({
@@ -15,6 +15,21 @@ export class DestroyBadCellPage implements OnInit {
   isStartBlank = true;
 
   constructor() { }
+
+  ionViewDidEnter() {
+
+  }
+
+  checkCharactersX() {
+    const ionContentOffsetHeight = document.getElementById('ionContent')?.offsetHeight;
+    const characters = document.getElementById('characters');
+    const charactersBottomPosition = characters?.getBoundingClientRect().bottom;
+    if (charactersBottomPosition && charactersBottomPosition && (ionContentOffsetHeight! < charactersBottomPosition!)) {
+      characters.classList.remove('characters')
+    }
+  }
+
+  checkCharactersXInterval = setInterval(this.checkCharactersX, 800);
 
   ngOnInit() {
     this.characters = this.createRandomCharacter(16)
@@ -45,5 +60,27 @@ export class DestroyBadCellPage implements OnInit {
       return true
     }
     return false;
+  }
+
+  moveLeft() {
+    const spaceshipCol = document.getElementById('spaceshipColEl');
+    if (spaceshipCol) {
+      const spaceshipEl = document.getElementById('spaceshipEl');
+      if (spaceshipEl?.getBoundingClientRect().left! > 0) {
+        const currentRight = parseInt(spaceshipCol.style.right) || 0;
+        spaceshipCol.style.right = currentRight + 10 + 'px';
+      }
+    }
+  }
+
+  moveRight() {
+    const spaceshipCol = document.getElementById('spaceshipColEl');
+    if (spaceshipCol) {
+      const spaceshipEl = document.getElementById('spaceshipEl');
+      if (spaceshipEl?.getBoundingClientRect().right! < window.innerWidth) {
+        const currentRight = parseInt(spaceshipCol.style.right) || 0;
+        spaceshipCol.style.right = currentRight - 10 + 'px';
+      }
+    }
   }
 }
