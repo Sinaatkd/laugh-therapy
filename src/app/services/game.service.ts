@@ -11,8 +11,8 @@ export class GameService {
   private destroyBadCell = new GameDTO("سلول های بد", "اینجا توضیحات بازیه", "./assets/images/bad-cell.jpg", '/destroy-bad-cell');
   
   private _games: BehaviorSubject<Array<GameDTO>> = new BehaviorSubject<Array<GameDTO>>([
-    this.ballonGame,
     this.destroyBadCell,
+    this.ballonGame,
   ]);
 
   get games() {

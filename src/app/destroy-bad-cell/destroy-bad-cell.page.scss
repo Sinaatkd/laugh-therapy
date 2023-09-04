@@ -1,0 +1,70 @@
+ion-content {
+    --background: var(--ion-color-light) url('../../assets/images/destroy-bad-cell-bg.jpg') no-repeat center center / cover;
+}
+
+.top {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+}
+
+ion-col {
+    display: flex;
+}
+
+ion-img {
+    width: 60px;
+    height: 60px;
+}
+
+.characters {
+    animation: moveBottom 30s ease-in-out;
+}
+
+.moveRightLeft {
+    animation: moveRightLeft 4s linear infinite;
+}
+
+.moveLeftRight {
+    animation: moveLeftRight 4s linear infinite;
+}
+
+@keyframes moveBottom {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(calc(100vh - 100px));
+    }
+}
+
+@keyframes moveRightLeft {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(100px);
+    }
+}
+
+@keyframes moveLeftRight {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-100px);
+    }
+}
