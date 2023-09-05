@@ -40,6 +40,24 @@ ion-img {
     height: 60px;
 }
 
+:host ::ng-deep .bullet {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--ion-color-warning);
+    border-radius: 50%;
+    animation: shoot 0.5s ease forwards;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(calc(-100vh));
+    }
+}
+
 @keyframes moveBottom {
     0% {
         transform: translateY(0);

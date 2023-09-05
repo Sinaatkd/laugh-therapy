@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeightedRandomPicker } from '../utilities/randomWeightedNumber';
 
 @Component({
@@ -13,12 +13,9 @@ export class DestroyBadCellPage implements OnInit {
 
   bullet = 10;
   isStartBlank = true;
+  isEndGame = false;
 
   constructor() { }
-
-  ionViewDidEnter() {
-
-  }
 
   checkCharactersX() {
     const ionContentOffsetHeight = document.getElementById('ionContent')?.offsetHeight;
@@ -29,8 +26,12 @@ export class DestroyBadCellPage implements OnInit {
     }
   }
 
-  checkCharactersXInterval = setInterval(this.checkCharactersX, 800);
+  checkCharactersXIntervalID = setInterval(this.checkCharactersX, 800);
 
+  ionViewWillLeave() {
+    clearInterval(this.checkCharactersXIntervalID)
+  }
+  
   ngOnInit() {
     this.characters = this.createRandomCharacter(16)
   }
@@ -40,7 +41,7 @@ export class DestroyBadCellPage implements OnInit {
     const weight = [0.9, 0.1]
     const randomList: number[] = [];
     for (let i = 0; i < length; i++) {
-      if (i != 0 && i != 7 && i != 8 && i != 15) {
+      if (![0, 7, 8, 15].includes(i)) {
         const picker = new WeightedRandomPicker(items, weight)
         randomList.push(picker.pickRandom());
       } else {
@@ -52,9 +53,17 @@ export class DestroyBadCellPage implements OnInit {
 
   shoot() {
     if (this.bullet > 0) {
+      const spaceshipElRect = document.getElementById('spaceshipEl')?.getBoundingClientRect()!;
+      const newBullet = document.createElement('div');
+      newBullet.className = 'bullet';
+      newBullet.style.left = spaceshipElRect.x + 22 + 'px'
+      newBullet.style.top = spaceshipElRect.y - 15 + 'px'
+      const ionContent = document.getElementById('ionContent');
+      ionContent?.appendChild(newBullet);
       this.bullet -= 1;
     }
   }
+
   setAnimationMoveRightLeft(index: number) {
     if ([1, 2, 3, 9, 10, 11].includes(index)) {
       return true
