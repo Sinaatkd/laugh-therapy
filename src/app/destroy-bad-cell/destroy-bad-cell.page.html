@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true" [scrollY]="false" [scrollX]="false" id="ionContent">
-    <ion-grid class="ion-margin-top characters" id="characters">
+    <ion-grid class="ion-margin-top characters" id="charactersGrid">
         <ion-row>
             <ion-col size="3" class="ion-justify-content-center"
                 [ngClass]="{'moveRightLeft': setAnimationMoveRightLeft(i), 'moveLeftRight': !setAnimationMoveRightLeft(i), }"
@@ -21,7 +21,7 @@
             <ion-col size="4" class="ion-justify-content-start">
                 <ion-button mode="ios" (click)="shoot()">
                     <ion-icon slot="start" name="add-circle-outline"></ion-icon>
-                    {{ bullet }}
+                    {{ bulletCount }}
                 </ion-button>
             </ion-col>
             <ion-col size="8" class="ion-justify-content-end">
