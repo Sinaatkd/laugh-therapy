@@ -100,20 +100,25 @@ export class DestroyBadCellPage implements OnInit {
           bulletRect.bottom >= character.top &&
           bulletRect.top <= character.bottom
         ) {
+          let soundAddress = '';
+
           if (characters[i].src?.toString().indexOf('good') == -1) {
             this.bulletCount += 1;
             this.deadCharacters.push(0);
-            bullet.remove();
-            characters[i].remove();
+            soundAddress = '../../../assets/sounds/laugh/laugh2.mp3'
           } else {
             this.bulletCount -= 1;
             this.deadCharacters.push(1);
-            bullet.remove();
-            characters[i].remove();
+            soundAddress = '../../../assets/sounds/sounds-effect/Wrong-Shot-Effect.mp3'
           }
+
+          bullet.remove();
+          characters[i].remove();
           if (this.isAllBadCellDestroyed()) {
             this.endGame();
           }
+          const audio = new Audio(soundAddress);
+          audio.play();
           return;
         }
       }
@@ -168,24 +173,36 @@ export class DestroyBadCellPage implements OnInit {
 
   async endGame(isCellReach: boolean = false) {
     let message = '';
+    let soundAddress = '';
 
     const characters = document.getElementById('charactersGrid')!;
     characters.classList.remove('characters')
     if (isCellReach) {
       message = 'سلول ها بهت رسیدن ☹️☹️. از رسیدن سلول ها به خودت جلوگیری کن'
       this.isGameFinished = true;
+      soundAddress = '../../../assets/sounds/sounds-effect/Lose-Effect.mp3';
     } else if (!this.isAllBadCellDestroyed() && this.bulletCount <= 0) {
       this.isGameFinished = true;
       message = 'گلوله هات تموم شدن☹️☹️.'
-
+      soundAddress = '../../../assets/sounds/sounds-effect/Lose-Effect.mp3';
     } else if (this.isAllBadCellDestroyed() && this.bulletCount >= 0) {
       message = 'تو تونستی همه سلول هارو از بین ببری 🥳🥳'
       this.isGameFinished = true;
+      soundAddress = '../../../assets/sounds/sounds-effect/Win-Effect.mp3';
     }
+    const loseEffect = new Audio(soundAddress)
+    loseEffect.play();
     this.alertCtrl.create({
       message: message,
       mode: 'ios',
+      backdropDismiss: false,
       buttons: [
+        {
+          text: 'دوباره',
+          handler: () => {
+            window.location.reload();
+          }
+        },
         {
           text: 'بازگشت به صفحه اصلی',
           handler: () => {
