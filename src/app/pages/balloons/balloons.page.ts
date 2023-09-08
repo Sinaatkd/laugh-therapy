@@ -80,13 +80,14 @@ export class BalloonsPage implements OnInit {
 
   balloonBurst(balloonEl: HTMLElement, balloonIndex: number) {
     if (balloonEl.style.opacity !== '0') {
-      const audio = new Audio('../../../assets/sounds/sounds-effect/Balloon-Blast-Sound-Effect.mp3');
-      audio.play().then();
-      this.counter += 1;
       balloonEl.style.opacity = '0';
+      this.counter += 1;
       if (balloonIndex == this.correctBalloonIndex) {
         this.stopCharacterSound();
         this.openBalloonWinModal();
+      } else {
+        const audio = new Audio('../../../assets/sounds/sounds-effect/Wrong-Shot-Effect.mp3');
+        audio.play().then();
       }
     }
   }
