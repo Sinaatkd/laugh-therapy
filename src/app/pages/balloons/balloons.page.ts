@@ -72,8 +72,7 @@ export class BalloonsPage implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private navCtrl: NavController,
-    private router: Router
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() { }
@@ -124,6 +123,14 @@ export class BalloonsPage implements OnInit {
   }
 
   resetGame() {
-    window.location.reload();
+    const balloons = document.getElementsByClassName('balloon');
+    for (let i = 0; i < balloons.length; i++) {
+      const el = balloons[i] as HTMLElement;
+      el.style.opacity = '1';
+    }
+    this.correctBalloonIndex = Math.floor(Math.random() * environment.BALLOON_COUNT);
+    this.selectedCharacter = this.characters.find(character => character.id === this.correctBalloonIndex);
+    this.counter = 0;
+    this.CharacterSoundAudioEl?.nativeElement.setAttribute('src', this.selectedCharacter!.sound);
   }
 }
