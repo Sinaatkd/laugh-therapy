@@ -137,7 +137,6 @@ export class DestroyBadCellPage implements OnInit {
   }
 
   setAnimationMoveRightLeft(index: number) {
-    console.log(index);
     if ([0, 1, 2, 3, 8, 9, 10, 11].includes(index)) {
       return true
     }
