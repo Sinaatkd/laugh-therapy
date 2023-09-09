@@ -13,7 +13,7 @@ export class DestroyBadCellPage implements OnInit {
   characters: number[] = []
   deadCharacters: number[] = [];
 
-  bulletCount = 10;
+  bulletCount = 50;
   isGameFinished = false;
   isEndGameFunctionAlreadyChecked = false;
   isGyroscopeSupported = false;
@@ -238,7 +238,7 @@ export class DestroyBadCellPage implements OnInit {
 
     this.isGameFinished = false;
     this.deadCharacters = [];
-    this.bulletCount = 10;
+    this.bulletCount = 50;
     document.getElementById('charactersGrid')?.classList.add('characters');
     this.checkCharactersY();
   }
