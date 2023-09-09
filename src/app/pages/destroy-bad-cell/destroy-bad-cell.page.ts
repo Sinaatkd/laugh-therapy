@@ -205,8 +205,8 @@ export class DestroyBadCellPage implements OnInit {
       this.isGameFinished = true;
       soundAddress = '../../../assets/sounds/sounds-effect/Win-Effect.mp3';
     }
-    const loseEffect = new Audio(soundAddress)
-    loseEffect.play();
+    const audio = new Audio(soundAddress)
+    audio.play();
     this.alertCtrl.create({
       message: message,
       mode: 'ios',
@@ -216,12 +216,14 @@ export class DestroyBadCellPage implements OnInit {
           text: 'دوباره',
           handler: () => {
             this.resetGame();
+            audio.pause();
           }
         },
         {
           text: 'بازگشت به صفحه اصلی',
           handler: () => {
             this.navCtrl.navigateBack('/home');
+            audio.pause();
           }
         }
       ]
