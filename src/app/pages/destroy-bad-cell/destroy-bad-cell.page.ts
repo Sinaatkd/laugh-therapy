@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeightedRandomPicker } from '../utilities/randomWeightedNumber';
+import { WeightedRandomPicker } from '../../utilities/randomWeightedNumber';
 import { AlertController, NavController } from '@ionic/angular';
 
 @Component({

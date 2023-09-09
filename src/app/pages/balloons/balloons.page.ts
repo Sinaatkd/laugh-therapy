@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { BalloonWinComponent } from 'src/app/components/balloon-win/balloon-win.component';
 import { environment } from 'src/environments/environment';

@@ -4,8 +4,8 @@
             <ion-col size="3" class="ion-justify-content-center"
                 [ngClass]="{'moveRightLeft': setAnimationMoveRightLeft(i), 'moveLeftRight': !setAnimationMoveRightLeft(i), }"
                 *ngFor="let character of characters; let i = index">
-                <ion-img src="../../assets/images/bad-cell/bad-cell.png" *ngIf="character === 0"></ion-img>
-                <ion-img src="../../assets/images/bad-cell/good-cell.png" *ngIf="character === 1"></ion-img>
+                <ion-img src="../../../assets/images/bad-cell/bad-cell.png" *ngIf="character === 0"></ion-img>
+                <ion-img src="../../../assets/images/bad-cell/good-cell.png" *ngIf="character === 1"></ion-img>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -16,7 +16,7 @@
     <ion-grid>
         <ion-row>
             <ion-col id="spaceshipColEl" size="12" class="ion-justify-content-center ion-no-padding">
-                <img id="spaceshipEl" class="spaceship" src="../../assets/images/bad-cell/spaceship.png" />
+                <img id="spaceshipEl" class="spaceship" src="../../../assets/images/bad-cell/spaceship.png" />
             </ion-col>
             <ion-col size="4" class="ion-justify-content-start">
                 <ion-button mode="ios" (click)="shoot()">

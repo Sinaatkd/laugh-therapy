@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'destroy-bad-cell',
-    loadChildren: () => import('./destroy-bad-cell/destroy-bad-cell.module').then( m => m.DestroyBadCellPageModule)
+    loadChildren: () => import('./pages/destroy-bad-cell/destroy-bad-cell.module').then( m => m.DestroyBadCellPageModule)
   },
 ];
 
