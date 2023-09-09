@@ -14,7 +14,6 @@ export class DestroyBadCellPage implements OnInit {
   deadCharacters: number[] = [];
 
   bulletCount = 10;
-  isStartBlank = true;
   isGameFinished = false;
   isEndGameFunctionAlreadyChecked = false;
 
@@ -95,6 +94,7 @@ export class DestroyBadCellPage implements OnInit {
       for (let i = 0; i < characters.length; i++) {
         const character = characters[i].getBoundingClientRect()!;
         if (
+          characters[i].style.opacity != '0' &&
           bulletRect.right >= character.left &&
           bulletRect.left <= character.right &&
           bulletRect.bottom >= character.top &&
@@ -113,7 +113,7 @@ export class DestroyBadCellPage implements OnInit {
           }
 
           bullet.remove();
-          characters[i].remove();
+          characters[i].style.opacity = '0';
           if (this.isAllBadCellDestroyed()) {
             this.endGame();
           }
@@ -137,6 +137,7 @@ export class DestroyBadCellPage implements OnInit {
   }
 
   setAnimationMoveRightLeft(index: number) {
+    console.log(index);
     if ([0, 1, 2, 3, 8, 9, 10, 11].includes(index)) {
       return true
     }
@@ -200,7 +201,7 @@ export class DestroyBadCellPage implements OnInit {
         {
           text: 'دوباره',
           handler: () => {
-            window.location.reload();
+            this.resetGame();
           }
         },
         {
@@ -211,5 +212,18 @@ export class DestroyBadCellPage implements OnInit {
         }
       ]
     }).then(alertEl => alertEl.present());
+  }
+
+  resetGame() {
+    const images = document.getElementsByTagName('ion-img');
+    for (let i = 0; i < images.length; i++) {
+      images[i].style.opacity = '1';
+    }
+
+    this.isGameFinished = false;
+    this.deadCharacters = [];
+    this.bulletCount = 10;
+    document.getElementById('charactersGrid')?.classList.add('characters');
+    this.checkCharactersY();
   }
 }
