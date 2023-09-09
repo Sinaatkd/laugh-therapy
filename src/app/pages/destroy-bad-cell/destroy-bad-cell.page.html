@@ -24,11 +24,11 @@
                     {{ bulletCount }}
                 </ion-button>
             </ion-col>
-            <ion-col size="8" class="ion-justify-content-end">
-                <ion-button mode="ios" (click)="moveRight()">
+            <ion-col size="8" class="ion-justify-content-end" *ngIf="!isGyroscopeSupported">
+                <ion-button mode="ios" (click)="moveRight(-10)">
                     <ion-icon slot="icon-only" name="caret-forward-outline"></ion-icon>
                 </ion-button>
-                <ion-button mode="ios" (click)="moveLeft()">
+                <ion-button mode="ios" (click)="moveLeft(10)">
                     <ion-icon slot="icon-only" name="caret-back-outline"></ion-icon>
                 </ion-button>
             </ion-col>

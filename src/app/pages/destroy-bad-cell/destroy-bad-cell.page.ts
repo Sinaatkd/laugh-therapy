@@ -16,11 +16,28 @@ export class DestroyBadCellPage implements OnInit {
   bulletCount = 10;
   isGameFinished = false;
   isEndGameFunctionAlreadyChecked = false;
+  isGyroscopeSupported = false;
 
   constructor(
     private alertCtrl: AlertController,
     private navCtrl: NavController,
   ) { }
+
+  ionViewDidEnter() {
+    if (window.DeviceMotionEvent) {
+      this.isGyroscopeSupported = true;
+      window.addEventListener('devicemotion', (event) => {
+        const accel = event.accelerationIncludingGravity!;
+        if (accel != undefined && accel != null) {
+          if (accel.x! < 0) {
+            this.moveRight(accel.x!)
+          } else {
+            this.moveLeft(accel.x!)
+          }
+        }
+      }, true)
+    }
+  }
 
   checkCharactersY() {
     if (!this.isGameFinished) {
@@ -36,8 +53,6 @@ export class DestroyBadCellPage implements OnInit {
       }, 800);
     }
   }
-
-
 
   ngOnInit() {
     this.characters = this.createRandomCharacter(16)
@@ -143,24 +158,24 @@ export class DestroyBadCellPage implements OnInit {
     return false;
   }
 
-  moveLeft() {
+  moveLeft(value: number) {
     const spaceshipCol = document.getElementById('spaceshipColEl');
     if (spaceshipCol) {
       const spaceshipEl = document.getElementById('spaceshipEl');
       if (spaceshipEl?.getBoundingClientRect().left! > 0) {
         const currentRight = parseInt(spaceshipCol.style.right) || 0;
-        spaceshipCol.style.right = currentRight + 10 + 'px';
+        spaceshipCol.style.right = currentRight + value + 'px';
       }
     }
   }
 
-  moveRight() {
+  moveRight(value: number) {
     const spaceshipCol = document.getElementById('spaceshipColEl');
     if (spaceshipCol) {
       const spaceshipEl = document.getElementById('spaceshipEl');
       if (spaceshipEl?.getBoundingClientRect().right! < window.innerWidth) {
         const currentRight = parseInt(spaceshipCol.style.right) || 0;
-        spaceshipCol.style.right = currentRight - 10 + 'px';
+        spaceshipCol.style.right = currentRight + value + 'px';
       }
     }
   }
