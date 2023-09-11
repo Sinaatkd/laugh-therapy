@@ -1,13 +1,49 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>dannys-nurse</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [scrollY]="false" [scrollX]="false">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">dannys-nurse</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid fixed class="item-box">
+    <ion-row class="show-animation" *ngIf="!isSelectColorTurn">
+      <ion-col size="12" *ngIf="isHair1Selected" class="ion-justify-content-end ion-no-padding">
+        <ion-button mode="ios" (click)="changeSelectColorTurn(true)">
+          <ion-icon slot="icon-only" name="caret-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-img class="item" src="../../../assets/images/dannys-nurse/hair1.png" (touchstart)="hair1Touch($event)"
+          (touchend)="hair1Touch($event)" (touchmove)="hair1Touch($event)" id='hair1'></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row class="show-animation" *ngIf="isSelectColorTurn">
+      <ion-col size="12" class="ion-margin-bottom">
+        <ion-button mode="ios" (click)="changeSelectColorTurn(false)">
+          <ion-icon slot="icon-only" name="caret-back-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="4" *ngFor="let color of colors" class="ion-justify-content-center">
+        <div class="color" [ngStyle]="{'background': color}" (click)="changeHairColor(color)"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div id="cartoon" role="img" aria-labelledby="description">
+    <div class="body"></div>
+    <div class="ear"></div>
+    <div class="ear"></div>
+    <div class="neck"></div>
+    <div class="hair-back show-animation" *ngIf="isHair1Selected"
+      [ngStyle]="{'background': selectedHairColor, 'color': selectedHairColor}"></div>
+    <div class="face" id="face">
+      <div class="cheeks"></div>
+      <div class="eye">
+        <div class="pupil"></div>
+      </div>
+      <div class="eye">
+        <div class="pupil"></div>
+      </div>
+      <div class="mouth" [ngClass]="{'snail-animation': isHair1Selected}"></div>
+      <div class="freckles"></div>
+      <div class="nose"></div>
+    </div>
+    <div class="hair-top show-animation" *ngIf="isHair1Selected"
+      [ngStyle]="{'background': selectedHairColor, 'color': selectedHairColor}"></div>
+  </div>
 </ion-content>
