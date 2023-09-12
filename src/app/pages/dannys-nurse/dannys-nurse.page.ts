@@ -72,6 +72,7 @@ export class DannysNursePage implements OnInit {
         this.isHat1Selected = false;
         this.isHat2Selected = false;
         this.isSelectColorTurn = true;
+        this.playSoundEffect('../../../assets/sounds/laugh/laugh5.mp3');
       }
       this.isDraggingHair1 = false;
       hair1El.style.transform = `translate(${hair1InitialX}px, ${hair1InitialY}px)`
@@ -109,6 +110,7 @@ export class DannysNursePage implements OnInit {
         this.isHair1Selected = false;
         this.isHat2Selected = false;
         this.isSelectColorTurn = true;
+        this.playSoundEffect('../../../assets/sounds/laugh/laugh5.mp3');
       }
       this.isDraggingHat1 = false;
       hat1El.style.transform = `translate(${hat1InitialX}px, ${hat1InitialY}px)`
@@ -146,6 +148,7 @@ export class DannysNursePage implements OnInit {
         this.isHair1Selected = false;
         this.isHat2Selected = true;
         this.isSelectColorTurn = true;
+        this.playSoundEffect('../../../assets/sounds/laugh/laugh5.mp3');
       }
       this.isDraggingHat2 = false;
       hat2El.style.transform = `translate(${hat2InitialX}px, ${hat2InitialY}px)`
@@ -166,5 +169,10 @@ export class DannysNursePage implements OnInit {
 
   getHat1BackgroundImage() {
     return `repeating-linear-gradient(-60deg, var(--ion-color-white) 0px, var(--ion-color-white) 5px, var(--ion-color-white) 5px, ${this.selectedHairColor} 5px, ${this.selectedHairColor} 20px)`
+  }
+
+  playSoundEffect(audioAddress: string) {
+    const audio = new Audio(audioAddress);
+    audio.play();
   }
 }
