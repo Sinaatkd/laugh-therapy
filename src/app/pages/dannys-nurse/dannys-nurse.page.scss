@@ -70,7 +70,7 @@
 	box-shadow: 0.2vmin 1.4vmin 0 -1vmin;
 	top: 68%;
 	left: 50%;
-	transform: translateX(-50%)  rotate(5deg);
+	transform: translateX(-50%) rotate(5deg);
 	animation: snailMouth 1s ease forwards;
 	animation-iteration-count: 1;
 }
@@ -206,8 +206,8 @@
 		13.5vmin -0.5vmin 0 -0.125vmin
 }
 
-.hair-top,
-.hair-back {
+.hair1-top,
+.hair1-back {
 	width: 15%;
 	height: 15%;
 	border-radius: 50%;
@@ -228,7 +228,7 @@
 		inset -1vmin -1vmin var(--shadow)
 }
 
-.hair-back {
+.hair1-back {
 	filter:
 		drop-shadow(-0.5vmin 0 var(--line)) drop-shadow(0.5vmin 0 var(--line)) drop-shadow(0 -0.5vmin var(--line));
 	box-shadow:
@@ -244,16 +244,6 @@
 		21vmin 9vmin,
 		20vmin 15vmin 0 -3vmin,
 		15vmin 19vmin 0 -1vmin
-}
-
-.hair-neck {
-	filter:
-		drop-shadow(-0.5vmin 0 var(--line)) drop-shadow(0.5vmin 0 var(--line)) drop-shadow(0 0.5vmin var(--line));
-	box-shadow:
-		12vmin 37vmin 0 -2vmin,
-		10vmin 41vmin 0 -3.5vmin,
-		-12vmin 37vmin 0 -2vmin,
-		-9vmin 40.5vmin 0 -3vmin;
 }
 
 .body {
@@ -280,6 +270,7 @@
 	from {
 		scale: 0;
 	}
+
 	to {
 		scale: 1;
 	}
@@ -309,5 +300,26 @@
 }
 
 ion-col {
-    display: flex;
+	display: flex;
+}
+
+.cap-top {
+	position: relative;
+	left: 27.5%;
+	top: 3%;
+	width: 45%;
+	height: 30%;
+	border: solid 1.5px black;
+	border-radius: 50% 50% 0 0;
+}
+
+.cap-bottom {
+	position: relative;
+	left: 25%;
+	top: 30%;
+	width: 50%;
+	height: 3%;
+	background: orange;
+	border: solid 1.5px #000;
+	border-radius: 50% 50% 0 0;
 }

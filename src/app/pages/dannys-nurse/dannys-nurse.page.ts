@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -22,6 +23,11 @@ export class DannysNursePage implements OnInit {
   isSelectColorTurn = false;
   hair1OffsetX = 0;
   hair1OffsetY = 0;
+  
+  isDraggingCap1 = false;
+  isCap1Selected = false;
+  cap1OffsetX = 0;
+  cap1OffsetY = 0;
 
   ngOnInit() {
   }
@@ -41,8 +47,8 @@ export class DannysNursePage implements OnInit {
       hair1InitialY = hair1Rect.y;
       this.isDraggingHair1 = true;
 
-      this.hair1OffsetX = event.targetTouches[0].clientX - hair1Rect.left
-      this.hair1OffsetY = event.targetTouches[0].clientY - hair1Rect.top
+      this.hair1OffsetX = event.targetTouches[0].clientX
+      this.hair1OffsetY = event.targetTouches[0].clientY
 
 
     } else if (event.type === 'touchmove') {
@@ -58,6 +64,7 @@ export class DannysNursePage implements OnInit {
 
       if (faceTop - 50 < draggedHairTop && draggedHairTop < faceTop + 50) {
         this.isHair1Selected = true;
+        this.isCap1Selected = false;
         this.isSelectColorTurn = true;
       }
       this.isDraggingHair1 = false;
@@ -65,11 +72,55 @@ export class DannysNursePage implements OnInit {
     }
   }
 
+  cap1Touch(event: TouchEvent) {
+    const cap1El = document.getElementById('cap1')!;
+    const cap1Rect = cap1El.getBoundingClientRect()
+    let cap1InitialX = 0;
+    let cap1InitialY = 0;
+
+    if (event.type === 'touchstart') {
+      cap1InitialX = cap1Rect.x;
+      cap1InitialY = cap1Rect.y;
+      this.isDraggingCap1 = true;
+
+      this.cap1OffsetX = event.targetTouches[0].clientX
+      this.cap1OffsetY = event.targetTouches[0].clientY
+
+
+    } else if (event.type === 'touchmove') {
+      if (!this.isDraggingCap1) return;
+      const newX = event.targetTouches[0].clientX - this.cap1OffsetX
+      const newY = event.targetTouches[0].clientY - this.cap1OffsetY
+      cap1El.style.transform = `translate(${newX}px, ${newY}px)`
+
+    } else if (event.type === 'touchend') {
+      const face = document.getElementById('face');
+      const faceTop = face!.getBoundingClientRect().top;
+      const draggedHairTop = cap1El.getBoundingClientRect().top
+
+      if (faceTop - 50 < draggedHairTop && draggedHairTop < faceTop + 50) {
+        this.isCap1Selected = true;
+        this.isHair1Selected = false;
+        this.isSelectColorTurn = true;
+      }
+      this.isDraggingCap1 = false;
+      cap1El.style.transform = `translate(${cap1InitialX}px, ${cap1InitialY}px)`
+    }
+  }
+
   changeSelectColorTurn(value: boolean) {
     this.isSelectColorTurn = value;
   }
-  
+
   changeHairColor(color: string) {
     this.selectedHairColor = color;
+  }
+
+  done() {
+
+  }
+
+  getCap1BackgroundImage() {
+    return `repeating-linear-gradient(-60deg, var(--ion-color-white) 0px, var(--ion-color-white) 5px, var(--ion-color-white) 5px, ${this.selectedHairColor} 5px, ${this.selectedHairColor} 20px)`
   }
 }
