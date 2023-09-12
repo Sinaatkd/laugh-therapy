@@ -6,16 +6,15 @@
   <app-character-hair1 class="show-animation hair1 hair1-back" [isHairBack]="true"></app-character-hair1>
   <div class="face" id="face">
     <div class="cheeks"></div>
-    <div class="eye">
-      <div class="pupil" [ngClass]="{'pupil-animation': runPupilAnimation}"></div>
+    <div class="eye" [ngClass]="{'happy-eye-animation': isCharacterHappy}">
+      <div class="pupil" [ngClass]="{'pupil-animation': runPupilAnimation, 'happy-pupil-animation': isCharacterHappy}"></div>
     </div>
-    <div class="eye">
-      <div class="pupil" [ngClass]="{'pupil-animation': runPupilAnimation}"></div>
+    <div class="eye" [ngClass]="{'happy-eye-animation': isCharacterHappy}">
+      <div class="pupil" [ngClass]="{'pupil-animation': runPupilAnimation, 'happy-pupil-animation': isCharacterHappy}"></div>
     </div>
-    <div class="mouth"></div>
+    <div class="mouth" [ngClass]="{'happy-mouth-animation': isCharacterHappy}"></div>
     <div class="freckles"></div>
     <div class="nose"></div>
   </div>
   <app-character-hair1 class="show-animation hair1" [isHairTop]="true"></app-character-hair1>
-
 </div>

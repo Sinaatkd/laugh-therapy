@@ -60,6 +60,17 @@
     transform: translateX(-50%);
 }
 
+.happy-mouth-animation {
+    animation: happy-mouth-animation 0.3 ease forwards;
+}
+
+@keyframes happy-mouth-animation {
+    to {
+        border-radius: 50%;
+		box-shadow: 0.2vmin 1.4vmin 0 -0.4vmin;
+    }
+}
+
 .ear {
     width: 15%;
     height: 25%;
@@ -126,6 +137,18 @@
         -0.25vmin -6vmin 0 -1vmin;
 }
 
+.happy-eye-animation {
+    animation: happy-character-eye 0.3s ease forwards;
+}
+
+@keyframes happy-character-eye {
+    to {
+        top: 30%;
+        border-radius: 100% / 100% 60% 10% 15%;
+        height: 25%;
+    }
+}
+
 .eye+.eye {
     left: auto;
     right: 12%;
@@ -149,19 +172,35 @@
     animation: pupil-animation 2.5s ease-in-out forwards;
 }
 
+
 @keyframes pupil-animation {
     0% {
         left: 22%;
     }
+
     33.3% {
         left: 13%;
     }
+
     66.6% {
         left: 30%;
     }
 
     99.9% {
         left: 22%;
+    }
+}
+
+.happy-pupil-animation {
+    animation: happy-pupil-animation 0.3s ease-in-out forwards;
+}
+
+@keyframes happy-pupil-animation {
+    to {
+        width: 7vmin;
+        height: 7vmin;
+        left: 18%;
+        top: 30%;
     }
 }
 
