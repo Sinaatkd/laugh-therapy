@@ -24,10 +24,10 @@ export class DannysNursePage implements OnInit {
   hair1OffsetX = 0;
   hair1OffsetY = 0;
   
-  isDraggingCap1 = false;
-  isCap1Selected = false;
-  cap1OffsetX = 0;
-  cap1OffsetY = 0;
+  isDraggingHat1 = false;
+  isHat1Selected = false;
+  hat1OffsetX = 0;
+  hat1OffsetY = 0;
 
   isDraggingHat2 = false;
   isHat2Selected = false;
@@ -69,7 +69,7 @@ export class DannysNursePage implements OnInit {
 
       if (faceTop - 50 < draggedHairTop && draggedHairTop < faceTop + 50) {
         this.isHair1Selected = true;
-        this.isCap1Selected = false;
+        this.isHat1Selected = false;
         this.isHat2Selected = false;
         this.isSelectColorTurn = true;
       }
@@ -78,40 +78,40 @@ export class DannysNursePage implements OnInit {
     }
   }
 
-  cap1Touch(event: TouchEvent) {
-    const cap1El = document.getElementById('cap1')!;
-    const cap1Rect = cap1El.getBoundingClientRect()
-    let cap1InitialX = 0;
-    let cap1InitialY = 0;
+  hat1Touch(event: TouchEvent) {
+    const hat1El = document.getElementById('hat1')!;
+    const hat1Rect = hat1El.getBoundingClientRect()
+    let hat1InitialX = 0;
+    let hat1InitialY = 0;
 
     if (event.type === 'touchstart') {
-      cap1InitialX = cap1Rect.x;
-      cap1InitialY = cap1Rect.y;
-      this.isDraggingCap1 = true;
+      hat1InitialX = hat1Rect.x;
+      hat1InitialY = hat1Rect.y;
+      this.isDraggingHat1 = true;
 
-      this.cap1OffsetX = event.targetTouches[0].clientX
-      this.cap1OffsetY = event.targetTouches[0].clientY
+      this.hat1OffsetX = event.targetTouches[0].clientX
+      this.hat1OffsetY = event.targetTouches[0].clientY
 
 
     } else if (event.type === 'touchmove') {
-      if (!this.isDraggingCap1) return;
-      const newX = event.targetTouches[0].clientX - this.cap1OffsetX
-      const newY = event.targetTouches[0].clientY - this.cap1OffsetY
-      cap1El.style.transform = `translate(${newX}px, ${newY}px)`
+      if (!this.isDraggingHat1) return;
+      const newX = event.targetTouches[0].clientX - this.hat1OffsetX
+      const newY = event.targetTouches[0].clientY - this.hat1OffsetY
+      hat1El.style.transform = `translate(${newX}px, ${newY}px)`
 
     } else if (event.type === 'touchend') {
       const face = document.getElementById('face');
       const faceTop = face!.getBoundingClientRect().top;
-      const draggedHairTop = cap1El.getBoundingClientRect().top
+      const draggedHairTop = hat1El.getBoundingClientRect().top
 
       if (faceTop - 50 < draggedHairTop && draggedHairTop < faceTop + 50) {
-        this.isCap1Selected = true;
+        this.isHat1Selected = true;
         this.isHair1Selected = false;
         this.isHat2Selected = false;
         this.isSelectColorTurn = true;
       }
-      this.isDraggingCap1 = false;
-      cap1El.style.transform = `translate(${cap1InitialX}px, ${cap1InitialY}px)`
+      this.isDraggingHat1 = false;
+      hat1El.style.transform = `translate(${hat1InitialX}px, ${hat1InitialY}px)`
     }
   }
 
@@ -142,7 +142,7 @@ export class DannysNursePage implements OnInit {
       const draggedHairTop = hat2El.getBoundingClientRect().top
 
       if (faceTop - 50 < draggedHairTop && draggedHairTop < faceTop + 50) {
-        this.isCap1Selected = false;
+        this.isHat1Selected = false;
         this.isHair1Selected = false;
         this.isHat2Selected = true;
         this.isSelectColorTurn = true;
@@ -164,7 +164,7 @@ export class DannysNursePage implements OnInit {
 
   }
 
-  getCap1BackgroundImage() {
+  getHat1BackgroundImage() {
     return `repeating-linear-gradient(-60deg, var(--ion-color-white) 0px, var(--ion-color-white) 5px, var(--ion-color-white) 5px, ${this.selectedHairColor} 5px, ${this.selectedHairColor} 20px)`
   }
 }
