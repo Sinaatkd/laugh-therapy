@@ -11,12 +11,17 @@ export class TiredCharacterComponent implements OnInit {
 
   runPupilAnimation = false;
   rnuBodyAnimation = false;
+  isCharacterHappy = false;
 
   ngOnInit() {
     setInterval(() => {
-      this.runPupilAnimation = !this.runPupilAnimation;
-      this.rnuBodyAnimation = !this.rnuBodyAnimation;
+      if (!this.isCharacterHappy) {
+        this.runPupilAnimation = !this.runPupilAnimation;
+        this.rnuBodyAnimation = !this.rnuBodyAnimation;
+      } else {
+        this.runPupilAnimation = false;
+        this.rnuBodyAnimation = false;
+      }
     }, 5000)
-
   }
 }
