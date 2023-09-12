@@ -2,7 +2,7 @@
 
   <ion-grid fixed class="item-box">
     <ion-row class="show-animation" *ngIf="!isSelectColorTurn">
-      <ion-col size="12" *ngIf="isHair1Selected || isCap1Selected" class="ion-justify-content-end">
+      <ion-col size="12" *ngIf="isHair1Selected || isCap1Selected || isHat2Selected" class="ion-justify-content-end">
         <ion-button mode="ios" (click)="changeSelectColorTurn(true)">
           <ion-icon slot="icon-only" name="caret-forward-outline"></ion-icon>
         </ion-button>
@@ -14,6 +14,10 @@
       <ion-col size="4">
         <ion-img class="item" src="../../../assets/images/dannys-nurse/cap1.png" (touchstart)="cap1Touch($event)"
           (touchend)="cap1Touch($event)" (touchmove)="cap1Touch($event)" id='cap1'></ion-img>
+      </ion-col>
+      <ion-col size="4">
+        <ion-img class="item" src="../../../assets/images/dannys-nurse/hat2.png" (touchstart)="hat2Touch($event)"
+          (touchend)="hat2Touch($event)" (touchmove)="hat2Touch($event)" id='hat2'></ion-img>
       </ion-col>
     </ion-row>
     <ion-row class="show-animation" *ngIf="isSelectColorTurn">
@@ -48,7 +52,7 @@
       <div class="eye">
         <div class="pupil"></div>
       </div>
-      <div class="mouth" [ngClass]="{'snail-animation': isHair1Selected || isCap1Selected}"></div>
+      <div class="mouth" [ngClass]="{'snail-animation': isHair1Selected || isCap1Selected || isHat2Selected}"></div>
       <div class="freckles"></div>
       <div class="nose"></div>
     </div>
@@ -58,6 +62,9 @@
     <div class="cap-top show-animation" *ngIf="isCap1Selected"
     [ngStyle]="{'background-image': getCap1BackgroundImage()}"
     ></div>
+    <div class="hat2 hat2-ha hat2-hb"
+    *ngIf="isHat2Selected"
+    [ngStyle]="{'background': selectedHairColor}"></div>
     <div class="cap-bottom show-animation" *ngIf="isCap1Selected"></div>
   </div>
 </ion-content>

@@ -17,10 +17,10 @@ export class DannysNursePage implements OnInit {
 
   colors = ['#963', '#aa8866', '#debe99', '#241c11', '#4f1a00', '#9a3300', '#FF5733', '#FF0000', '#0017FF'];
   selectedHairColor = '#963';
-
+  isSelectColorTurn = false;
+  
   isDraggingHair1 = false;
   isHair1Selected = false;
-  isSelectColorTurn = false;
   hair1OffsetX = 0;
   hair1OffsetY = 0;
   
@@ -28,6 +28,11 @@ export class DannysNursePage implements OnInit {
   isCap1Selected = false;
   cap1OffsetX = 0;
   cap1OffsetY = 0;
+
+  isDraggingHat2 = false;
+  isHat2Selected = false;
+  hat2OffsetX = 0;
+  hat2OffsetY = 0;
 
   ngOnInit() {
   }
@@ -65,6 +70,7 @@ export class DannysNursePage implements OnInit {
       if (faceTop - 50 < draggedHairTop && draggedHairTop < faceTop + 50) {
         this.isHair1Selected = true;
         this.isCap1Selected = false;
+        this.isHat2Selected = false;
         this.isSelectColorTurn = true;
       }
       this.isDraggingHair1 = false;
@@ -101,10 +107,48 @@ export class DannysNursePage implements OnInit {
       if (faceTop - 50 < draggedHairTop && draggedHairTop < faceTop + 50) {
         this.isCap1Selected = true;
         this.isHair1Selected = false;
+        this.isHat2Selected = false;
         this.isSelectColorTurn = true;
       }
       this.isDraggingCap1 = false;
       cap1El.style.transform = `translate(${cap1InitialX}px, ${cap1InitialY}px)`
+    }
+  }
+
+  hat2Touch(event: TouchEvent) {
+    const hat2El = document.getElementById('hat2')!;
+    const hat2Rect = hat2El.getBoundingClientRect()
+    let hat2InitialX = 0;
+    let hat2InitialY = 0;
+
+    if (event.type === 'touchstart') {
+      hat2InitialX = hat2Rect.x;
+      hat2InitialY = hat2Rect.y;
+      this.isDraggingHat2 = true;
+
+      this.hat2OffsetX = event.targetTouches[0].clientX
+      this.hat2OffsetY = event.targetTouches[0].clientY
+
+
+    } else if (event.type === 'touchmove') {
+      if (!this.isDraggingHat2) return;
+      const newX = event.targetTouches[0].clientX - this.hat2OffsetX
+      const newY = event.targetTouches[0].clientY - this.hat2OffsetY
+      hat2El.style.transform = `translate(${newX}px, ${newY}px)`
+
+    } else if (event.type === 'touchend') {
+      const face = document.getElementById('face');
+      const faceTop = face!.getBoundingClientRect().top;
+      const draggedHairTop = hat2El.getBoundingClientRect().top
+
+      if (faceTop - 50 < draggedHairTop && draggedHairTop < faceTop + 50) {
+        this.isCap1Selected = false;
+        this.isHair1Selected = false;
+        this.isHat2Selected = true;
+        this.isSelectColorTurn = true;
+      }
+      this.isDraggingHat2 = false;
+      hat2El.style.transform = `translate(${hat2InitialX}px, ${hat2InitialY}px)`
     }
   }
 
