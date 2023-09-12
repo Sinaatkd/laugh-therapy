@@ -15,7 +15,7 @@ export class DannysNursePage implements OnInit {
     document.dir = 'ltr';
   }
 
-  colors = ['#963', '#aa8866', '#debe99', '#241c11', '#4f1a00', '#9a3300'];
+  colors = ['#963', '#aa8866', '#debe99', '#241c11', '#4f1a00', '#9a3300', '#FF5733', '#FF0000', '#0017FF'];
   selectedHairColor = '#963';
 
   isDraggingHair1 = false;
