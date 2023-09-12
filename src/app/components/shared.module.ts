@@ -10,6 +10,7 @@ import { ChangeCharacterStyleComponent } from './change-character-style/change-c
 import { CharacterHat1Component } from './character-hat1/character-hat1.component';
 import { CharacterHat2Component } from './character-hat2/character-hat2.component';
 import { CharacterHair1Component } from './character-hair1/character-hair1.component';
+import { TiredCharacterComponent } from './tired-character/tired-character.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CharacterHair1Component } from './character-hair1/character-hair1.compo
     CharacterHat1Component,
     CharacterHat2Component,
     CharacterHair1Component,
+    TiredCharacterComponent
   ],
   exports: [
     ToolbarComponent,
@@ -36,6 +38,7 @@ import { CharacterHair1Component } from './character-hair1/character-hair1.compo
     CharacterHat1Component,
     CharacterHat2Component,
     CharacterHair1Component,
+    TiredCharacterComponent
   ]
 })
 export class SharedModule {}

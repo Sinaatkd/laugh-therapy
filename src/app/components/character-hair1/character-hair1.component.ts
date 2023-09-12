@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CharacterHair1Component  implements OnInit {
 
-  @Input('hairBackgroundColor') hairBackgroundColor!: string
+  @Input('hairBackgroundColor') hairBackgroundColor: string = '#963'
   @Input('isHairTop') isHairTop: boolean = false;
   @Input('isHairBack') isHairBack: boolean = false;
   
