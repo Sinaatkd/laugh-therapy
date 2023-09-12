@@ -7,6 +7,9 @@ import { GameItemComponent } from './game-item/game-item.component';
 import { RouterModule } from '@angular/router';
 import { BalloonWinComponent } from './balloon-win/balloon-win.component';
 import { ChangeCharacterStyleComponent } from './change-character-style/change-character-style.component';
+import { CharacterHat1Component } from './character-hat1/character-hat1.component';
+import { CharacterHat2Component } from './character-hat2/character-hat2.component';
+import { CharacterHair1Component } from './character-hair1/character-hair1.component';
 
 
 @NgModule({
@@ -21,12 +24,18 @@ import { ChangeCharacterStyleComponent } from './change-character-style/change-c
     GameItemComponent,
     BalloonWinComponent,
     ChangeCharacterStyleComponent,
+    CharacterHat1Component,
+    CharacterHat2Component,
+    CharacterHair1Component,
   ],
   exports: [
     ToolbarComponent,
     GameItemComponent,
     BalloonWinComponent,
     ChangeCharacterStyleComponent,
+    CharacterHat1Component,
+    CharacterHat2Component,
+    CharacterHair1Component,
   ]
 })
 export class SharedModule {}

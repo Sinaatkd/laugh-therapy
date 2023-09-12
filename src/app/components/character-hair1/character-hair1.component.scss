@@ -1,0 +1,39 @@
+.hair1-top,
+.hair1-back {
+	width: 15%;
+	height: 15%;
+	border-radius: 50%;
+	left: 50%;
+	top: 20%;
+	transform: translate(-50%, 0);
+	filter:
+		drop-shadow(0 0.75vmin var(--line)) drop-shadow(0 1vmin var(--shadow));
+	box-shadow:
+		-6vmin 0vmin 0 -2.25vmin,
+		-6vmin 1vmin 0 -2vmin var(--shadow),
+		-6vmin 1vmin 0 -2vmin,
+		-14vmin 2vmin 0 -1vmin,
+		7vmin 0.5vmin 0 -2vmin,
+		7vmin 1.25vmin 0 -1.75vmin var(--shadow),
+		7vmin 1.25vmin 0 -1.75vmin,
+		14vmin 2.25vmin 0 -1.75vmin,
+		inset -1vmin -1vmin var(--shadow)
+}
+
+.hair1-back {
+	filter:
+		drop-shadow(-0.5vmin 0 var(--line)) drop-shadow(0.5vmin 0 var(--line)) drop-shadow(0 -0.5vmin var(--line));
+	box-shadow:
+		-15vmin 18vmin,
+		-17vmin 10vmin 0 2vmin,
+		-20vmin 1vmin 0 -2vmin,
+		-12vmin -3vmin 0 1vmin,
+		-2vmin -5vmin 0 2vmin,
+		1vmin -6vmin 0 4vmin,
+		10vmin -7vmin 0 -1vmin,
+		15vmin -5vmin,
+		18vmin 3vmin 0 -1vmin,
+		21vmin 9vmin,
+		20vmin 15vmin 0 -3vmin,
+		15vmin 19vmin 0 -1vmin
+}
