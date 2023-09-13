@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { register } from 'swiper/element'
+
+register();
 
 @Component({
   selector: 'app-tired-character',
@@ -8,6 +11,32 @@ import { Component, OnInit } from '@angular/core';
 export class TiredCharacterComponent implements OnInit {
 
   constructor() { }
+
+  animations = [
+    {
+      title: 'spongebob1',
+      image: '../../../assets/images/spongebob.jpg',
+      videoAddress: '../../../assets/video/spongebob1.mp4'
+    },
+    {
+      title: 'mehmooni',
+      image: '../../../assets/images/mehmooni.jpg',
+      videoAddress: '../../../assets/video/mehmooni.mp4'
+    },
+    {
+      title: 'spongebob2',
+      image: '../../../assets/images/spongebob.jpg',
+      videoAddress: '../../../assets/video/spongebob2.mp4'
+    },
+    {
+      title: 'bossbaby',
+      image: '../../../assets/images/bossbaby.jpg',
+      videoAddress: '../../../assets/video/bossbaby.mp4'
+    },
+  ]
+
+  showVideo!: string;
+
 
   runPupilAnimation = false;
   rnuBodyAnimation = false;
@@ -23,5 +52,10 @@ export class TiredCharacterComponent implements OnInit {
         this.rnuBodyAnimation = false;
       }
     }, 5000)
+  }
+
+  playAnimation(title: string) {
+    this.isCharacterHappy = true;
+    this.showVideo = title;
   }
 }

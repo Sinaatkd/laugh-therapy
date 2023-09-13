@@ -67,7 +67,7 @@
 @keyframes happy-mouth-animation {
     to {
         border-radius: 50%;
-		box-shadow: 0.2vmin 1.4vmin 0 -0.4vmin;
+        box-shadow: 0.2vmin 1.4vmin 0 -0.4vmin;
     }
 }
 
@@ -285,4 +285,37 @@
 
 .hair1-back {
     top: 15%;
+}
+
+ion-button {
+    position: absolute;
+    left: 40%;
+    top: 35%;
+}
+
+ion-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+video {
+    width: 100%;
+    height: 200px;
+}
+
+.face-dance {
+    animation: face-dance 1s ease linear;
+}
+
+@keyframes face-dance {
+    from {
+        opacity: 1;
+        transform: rotate(0deg)
+    }
+    to {
+        opacity: 0;
+        transform: rotate(90deg)
+
+    }
 }

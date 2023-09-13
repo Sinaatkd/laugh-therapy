@@ -1,8 +1,16 @@
-<ion-list>
-  <ion-item *ngFor="let item of [1, 5, 6, 7]">
-    <ion-label>Awesome Label</ion-label>
-  </ion-item>
-</ion-list>
+<swiper-container>
+  <swiper-slide *ngFor="let animation of animations">
+    <ion-card mode="ios" (click)="playAnimation(animation.title)">
+      <ion-button mode="ios" (click)="playAnimation(animation.title)" *ngIf="showVideo !== animation.title">
+        <ion-icon slot="icon-only" name="play"></ion-icon>
+      </ion-button>
+      <ion-img [src]="animation.image" alt=""  *ngIf="showVideo !== animation.title"></ion-img>
+      <video controls *ngIf="showVideo === animation.title">
+        <source [src]="animation.videoAddress" type="video/mp4">
+      </video>
+    </ion-card>
+  </swiper-slide>
+</swiper-container>
 
 <div id="cartoon" role="img" aria-labelledby="description">
   <div class="body" [ngClass]="{'body-animation': rnuBodyAnimation}"></div>
@@ -10,7 +18,7 @@
   <div class="ear"></div>
   <div class="neck"></div>
   <app-character-hair1 class="show-animation hair1 hair1-back" [isHairBack]="true"></app-character-hair1>
-  <div class="face" id="face">
+  <div class="face face-dance" id="face">
     <div class="cheeks"></div>
     <div class="eye" [ngClass]="{'happy-eye-animation': isCharacterHappy}">
       <div class="pupil" [ngClass]="{'pupil-animation': runPupilAnimation, 'happy-pupil-animation': isCharacterHappy}"></div>
