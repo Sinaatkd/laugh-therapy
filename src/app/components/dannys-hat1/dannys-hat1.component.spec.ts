@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { DannysHat1Component } from './dannys-hat1.component';
 
-describe('CharacterHat1Component', () => {
+describe('DannysHat1Component', () => {
   let component: DannysHat1Component;
   let fixture: ComponentFixture<DannysHat1Component>;
 
