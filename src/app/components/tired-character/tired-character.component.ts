@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { register } from 'swiper/element'
 
 register();
@@ -10,6 +10,8 @@ register();
 })
 export class TiredCharacterComponent implements OnInit {
 
+  @Output() done: EventEmitter<any> = new EventEmitter()
+  
   constructor() { }
 
   animations = [
@@ -58,5 +60,9 @@ export class TiredCharacterComponent implements OnInit {
   playAnimation(title: string) {
     this.isCharacterHappy = true;
     this.showVideo = title;
+  }
+
+  animationEnded() {
+    this.done.emit();
   }
 }
