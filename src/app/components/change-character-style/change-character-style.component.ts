@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-change-character-style',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChangeCharacterStyleComponent implements OnInit {
 
+  @Output() done: EventEmitter<any> = new EventEmitter();
+  
   constructor() { }
 
   laughSoundAddress = '../../../assets/sounds/laugh/laugh5.mp3';
@@ -159,10 +161,6 @@ export class ChangeCharacterStyleComponent implements OnInit {
 
   changeHairColor(color: string) {
     this.selectedHairColor = color;
-  }
-
-  done() {
-
   }
 
   getHat1BackgroundImage() {

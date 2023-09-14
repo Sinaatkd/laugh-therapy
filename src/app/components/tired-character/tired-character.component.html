@@ -1,4 +1,4 @@
-<swiper-container>
+<swiper-container [slidesPerView]="1.1">
   <swiper-slide *ngFor="let animation of animations">
     <ion-card mode="ios" (click)="playAnimation(animation.title)">
       <ion-card-header>
@@ -6,7 +6,7 @@
           <ion-icon slot="icon-only" name="play"></ion-icon>
         </ion-button>
         <ion-img [src]="animation.image" alt=""  *ngIf="showVideo !== animation.title"></ion-img>
-        <video controls *ngIf="showVideo === animation.title">
+        <video controls autoplay *ngIf="showVideo === animation.title" (ended)="animationEnded()">
           <source [src]="animation.videoAddress" type="video/mp4">
         </video>
       </ion-card-header>
