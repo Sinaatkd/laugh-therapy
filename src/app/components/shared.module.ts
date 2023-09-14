@@ -9,7 +9,7 @@ import { BalloonWinComponent } from './balloon-win/balloon-win.component';
 import { ChangeCharacterStyleComponent } from './change-character-style/change-character-style.component';
 import { CharacterHat1Component } from './character-hat1/character-hat1.component';
 import { CharacterHat2Component } from './character-hat2/character-hat2.component';
-import { CharacterHair1Component } from './character-hair1/character-hair1.component';
+import { DannysHair1Component } from './dannys-hair1/dannys-hair1.component';
 import { TiredCharacterComponent } from './tired-character/tired-character.component';
 import { DannysFoodComponent } from './dannys-food/dannys-food.component';
 
@@ -28,7 +28,7 @@ import { DannysFoodComponent } from './dannys-food/dannys-food.component';
     ChangeCharacterStyleComponent,
     CharacterHat1Component,
     CharacterHat2Component,
-    CharacterHair1Component,
+    DannysHair1Component,
     TiredCharacterComponent,
     DannysFoodComponent,
   ],
@@ -39,7 +39,7 @@ import { DannysFoodComponent } from './dannys-food/dannys-food.component';
     ChangeCharacterStyleComponent,
     CharacterHat1Component,
     CharacterHat2Component,
-    CharacterHair1Component,
+    DannysHair1Component,
     TiredCharacterComponent,
     DannysFoodComponent,
   ],

@@ -43,7 +43,7 @@ export class TiredCharacterComponent implements OnInit {
   isCharacterHappy = false;
 
   ngOnInit() {
-    new Audio("../../../assets/sounds/descriptions/tired-character.aac").play();
+    // new Audio("../../../assets/sounds/descriptions/tired-character.aac").play();
     setInterval(() => {
       if (!this.isCharacterHappy) {
         this.runPupilAnimation = !this.runPupilAnimation;

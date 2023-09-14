@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-character-hair1',
-  templateUrl: './character-hair1.component.html',
-  styleUrls: ['./character-hair1.component.scss'],
+  selector: 'app-dannys-hair1',
+  templateUrl: './dannys-hair1.component.html',
+  styleUrls: ['./dannys-hair1.component.scss'],
 })
-export class CharacterHair1Component  implements OnInit {
+export class DannysHair1Component  implements OnInit {
 
   @Input('hairBackgroundColor') hairBackgroundColor: string = '#963'
   @Input('isHairTop') isHairTop: boolean = false;
