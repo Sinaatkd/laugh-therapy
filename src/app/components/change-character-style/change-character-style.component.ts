@@ -32,6 +32,7 @@ export class ChangeCharacterStyleComponent implements OnInit {
   hat2OffsetY = 0;
 
   ngOnInit() {
+    new Audio('../../../assets/sounds/descriptions/change-character-style.aac').play();
   }
 
   ionViewDidLeave() {
