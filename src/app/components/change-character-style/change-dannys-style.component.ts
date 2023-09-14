@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-change-character-style',
-  templateUrl: './change-character-style.component.html',
-  styleUrls: ['./change-character-style.component.scss'],
+  selector: 'app-change-dannys-style',
+  templateUrl: './change-dannys-style.component.html',
+  styleUrls: ['./change-dannys-style.component.scss'],
 })
-export class ChangeCharacterStyleComponent implements OnInit {
+export class ChangeDannysStyleComponent implements OnInit {
 
   @Output() done: EventEmitter<any> = new EventEmitter();
   
@@ -34,7 +34,7 @@ export class ChangeCharacterStyleComponent implements OnInit {
   hat2OffsetY = 0;
 
   ngOnInit() {
-    new Audio('../../../assets/sounds/descriptions/change-character-style.aac').play();
+    new Audio('../../../assets/sounds/descriptions/change-dannys-style.aac').play();
   }
 
   ionViewDidLeave() {

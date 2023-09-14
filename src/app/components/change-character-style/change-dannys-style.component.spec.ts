@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ChangeCharacterStyleComponent } from './change-character-style.component';
+import { ChangeDannysStyleComponent } from './change-dannys-style.component';
 
 describe('ChangeCharacterStyleComponent', () => {
-  let component: ChangeCharacterStyleComponent;
-  let fixture: ComponentFixture<ChangeCharacterStyleComponent>;
+  let component: ChangeDannysStyleComponent;
+  let fixture: ComponentFixture<ChangeDannysStyleComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChangeCharacterStyleComponent ],
+      declarations: [ ChangeDannysStyleComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChangeCharacterStyleComponent);
+    fixture = TestBed.createComponent(ChangeDannysStyleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
