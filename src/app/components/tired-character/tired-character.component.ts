@@ -16,24 +16,24 @@ export class TiredCharacterComponent implements OnInit {
 
   animations = [
     {
-      title: 'spongebob1',
-      image: '../../../assets/images/spongebob.jpg',
-      videoAddress: '../../../assets/video/spongebob1.mp4'
-    },
-    {
       title: 'mehmooni',
       image: '../../../assets/images/mehmooni.jpg',
       videoAddress: '../../../assets/video/mehmooni.mp4'
     },
     {
-      title: 'spongebob2',
+      title: 'spongebob1',
       image: '../../../assets/images/spongebob.jpg',
-      videoAddress: '../../../assets/video/spongebob2.mp4'
+      videoAddress: '../../../assets/video/spongebob1.mp4'
     },
     {
       title: 'bossbaby',
       image: '../../../assets/images/bossbaby.jpg',
       videoAddress: '../../../assets/video/bossbaby.mp4'
+    },
+    {
+      title: 'spongebob2',
+      image: '../../../assets/images/spongebob.jpg',
+      videoAddress: '../../../assets/video/spongebob2.mp4'
     },
   ]
 
