@@ -11,7 +11,7 @@ register();
 export class TiredCharacterComponent implements OnInit {
 
   @Output() done: EventEmitter<any> = new EventEmitter()
-  
+
   constructor() { }
 
   animations = [
@@ -60,9 +60,11 @@ export class TiredCharacterComponent implements OnInit {
   playAnimation(title: string) {
     this.isCharacterHappy = true;
     this.showVideo = title;
+    new Audio("../../../assets/sounds/laugh/laugh3.mp3").play();
   }
 
   animationEnded() {
+    new Audio("../../../assets/sounds/laugh/laugh3.mp3").play();
     this.done.emit();
   }
 }
