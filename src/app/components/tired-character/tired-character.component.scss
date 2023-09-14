@@ -319,3 +319,21 @@ video {
 
     }
 }
+
+ion-card {
+    background: none;
+    box-shadow: none;
+}
+
+ion-card-header {
+    padding: 5px 7px;
+    background: var(--ion-color-dark);
+}
+
+ion-card-content {
+    width: 70%;
+    height: 4px;
+    margin: 0 auto;
+    border-radius: 0 0 50% 50%;
+    background: var(--ion-color-dark);
+}
