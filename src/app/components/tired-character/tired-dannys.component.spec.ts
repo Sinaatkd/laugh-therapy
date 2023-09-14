@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TiredCharacterComponent } from './tired-character.component';
+import { TiredDannysComponent } from './tired-dannys.component';
 
 describe('TiredCharacterComponent', () => {
-  let component: TiredCharacterComponent;
-  let fixture: ComponentFixture<TiredCharacterComponent>;
+  let component: TiredDannysComponent;
+  let fixture: ComponentFixture<TiredDannysComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TiredCharacterComponent ],
+      declarations: [ TiredDannysComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TiredCharacterComponent);
+    fixture = TestBed.createComponent(TiredDannysComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

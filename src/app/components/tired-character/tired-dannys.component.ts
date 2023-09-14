@@ -4,11 +4,11 @@ import { register } from 'swiper/element'
 register();
 
 @Component({
-  selector: 'app-tired-character',
-  templateUrl: './tired-character.component.html',
-  styleUrls: ['./tired-character.component.scss'],
+  selector: 'app-tired-dannys',
+  templateUrl: './tired-dannys.component.html',
+  styleUrls: ['./tired-dannys.component.scss'],
 })
-export class TiredCharacterComponent implements OnInit {
+export class TiredDannysComponent implements OnInit {
 
   @Output() done: EventEmitter<any> = new EventEmitter()
 
