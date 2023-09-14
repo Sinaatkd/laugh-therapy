@@ -11,6 +11,7 @@ import { CharacterHat1Component } from './character-hat1/character-hat1.componen
 import { CharacterHat2Component } from './character-hat2/character-hat2.component';
 import { CharacterHair1Component } from './character-hair1/character-hair1.component';
 import { TiredCharacterComponent } from './tired-character/tired-character.component';
+import { DannysFoodComponent } from './dannys-food/dannys-food.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { TiredCharacterComponent } from './tired-character/tired-character.compo
     CharacterHat1Component,
     CharacterHat2Component,
     CharacterHair1Component,
-    TiredCharacterComponent
+    TiredCharacterComponent,
+    DannysFoodComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -38,7 +40,8 @@ import { TiredCharacterComponent } from './tired-character/tired-character.compo
     CharacterHat1Component,
     CharacterHat2Component,
     CharacterHair1Component,
-    TiredCharacterComponent
+    TiredCharacterComponent,
+    DannysFoodComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
