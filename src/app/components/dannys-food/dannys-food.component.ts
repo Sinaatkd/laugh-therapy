@@ -55,6 +55,8 @@ export class DannysFoodComponent implements OnInit {
   ]
 
   selectedFood = this.choiceRandomFood();
+  foodOffsetX = 0;
+  foodOffsetY = 0;
 
   constructor() { }
 
@@ -76,4 +78,39 @@ export class DannysFoodComponent implements OnInit {
     }
   }
 
+  foodTouch(event: TouchEvent, elementId: string) {
+    const foodEl = document.getElementById(elementId)!;
+    const foodRect = foodEl.getBoundingClientRect()
+    let foodInitialX = 0;
+    let foodInitialY = 0;
+
+
+    if (event.type === 'touchstart') {
+      foodInitialX = foodRect.x;
+      foodInitialY = foodRect.y;
+
+      this.foodOffsetX = event.targetTouches[0].clientX
+      this.foodOffsetY = event.targetTouches[0].clientY
+
+
+    } else if (event.type === 'touchmove') {
+      const newX = event.targetTouches[0].clientX - this.foodOffsetX
+      const newY = event.targetTouches[0].clientY - this.foodOffsetY
+      foodEl.style.transform = `translate(${newX}px, ${newY}px)`
+
+    } else if (event.type === 'touchend') {
+      const mouth = document.getElementById('mouth');
+      const mouthTop = mouth!.getBoundingClientRect().top;
+      const draggedFoodTop = foodEl.getBoundingClientRect().top
+
+      if (mouthTop - 50 < draggedFoodTop && draggedFoodTop < mouthTop + 50) {
+        // this.playSoundEffect(this.laughSoundAddress);
+        if (elementId === this.selectedFood.elementId) {
+          console.log('eat');
+        }
+
+      }
+      foodEl.style.transform = `translate(${foodInitialX}px, ${foodInitialY}px)`
+    }
+  }
 }
