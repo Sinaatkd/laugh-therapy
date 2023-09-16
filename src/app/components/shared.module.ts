@@ -12,6 +12,7 @@ import { DannysHat2Component } from './dannys-hat2/dannys-hat2.component';
 import { DannysHair1Component } from './dannys-hair1/dannys-hair1.component';
 import { TiredDannysComponent } from './tired-dannys/tired-dannys.component';
 import { DannysFoodComponent } from './dannys-food/dannys-food.component';
+import { DannysPainComponent } from './dannys-pain/dannys-pain.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { DannysFoodComponent } from './dannys-food/dannys-food.component';
     DannysHair1Component,
     TiredDannysComponent,
     DannysFoodComponent,
+    DannysPainComponent
   ],
   exports: [
     ToolbarComponent,
@@ -42,6 +44,7 @@ import { DannysFoodComponent } from './dannys-food/dannys-food.component';
     DannysHair1Component,
     TiredDannysComponent,
     DannysFoodComponent,
+    DannysPainComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

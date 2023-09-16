@@ -64,10 +64,7 @@ export class DannysFoodComponent implements OnInit {
   foodOffsetY = 0;
   isEatingMode = false;
 
-  constructor(
-    private alertCtrl: AlertController,
-    private navCtrl: NavController,
-  ) { }
+  constructor( ) { }
 
   ngOnInit() {
     this.setShowDannysFoodHave();
