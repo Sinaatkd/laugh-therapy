@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,8 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./dannys-food.component.scss'],
 })
 export class DannysFoodComponent implements OnInit {
+
+  @Output() done: EventEmitter<any> = new EventEmitter();
 
   showDannysFoodHave = false;
   eatenFoodsCount = 0;
@@ -69,6 +71,7 @@ export class DannysFoodComponent implements OnInit {
 
   ngOnInit() {
     this.setShowDannysFoodHave();
+    new Audio("../../../assets/sounds/descriptions/dannys-food.aac").play();
   }
 
   choiceRandomFood(): any {
@@ -149,6 +152,13 @@ export class DannysFoodComponent implements OnInit {
             text: 'دوباره',
             handler: () => {
               this.resetGame();
+              audio.pause();
+            }
+          },
+          {
+            text: 'بازی بعدی',
+            handler: () => {
+              this.done.emit();
               audio.pause();
             }
           },
