@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-dannys-food',
@@ -61,7 +62,10 @@ export class DannysFoodComponent implements OnInit {
   foodOffsetY = 0;
   isEatingMode = false;
 
-  constructor() { }
+  constructor(
+    private alertCtrl: AlertController,
+    private navCtrl: NavController,
+  ) { }
 
   ngOnInit() {
     this.setShowDannysFoodHave();
@@ -133,10 +137,41 @@ export class DannysFoodComponent implements OnInit {
   changeSelectedFood() {
     if (this.eatenFoodsCount >= 3) {
       this.isHappyDanny = true;
+      const soundAddress = '../../../assets/sounds/sounds-effect/Win-Effect.mp3';
+      const audio = new Audio(soundAddress);
+      audio.play();
+      this.alertCtrl.create({
+        message: 'تو تونستی دنی رو خوشحال کنی 🥳🥳',
+        mode: 'ios',
+        backdropDismiss: false,
+        buttons: [
+          {
+            text: 'دوباره',
+            handler: () => {
+              this.resetGame();
+              audio.pause();
+            }
+          },
+          {
+            text: 'بازگشت به صفحه اصلی',
+            handler: () => {
+              this.navCtrl.navigateBack('/home');
+              audio.pause();
+            }
+          }
+        ]
+      }).then(alertEl => alertEl.present());
     } else {
       this.selectedFood = this.choiceRandomFood();
       this.setShowDannysFoodHave();
       this.setShowDannysFoodHave();
     }
+  }
+
+  resetGame() {
+    this.eatenFoodsCount = 0;
+    this.selectedFood = this.choiceRandomFood();
+    this.setShowDannysFoodHave();
+    this.isHappyDanny = false;
   }
 }
