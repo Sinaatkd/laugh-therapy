@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dannys-pain',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dannys-pain.component.scss'],
 })
 export class DannysPainComponent implements OnInit {
+
+  @Output() done: EventEmitter<any> = new EventEmitter();
 
   secondOfAudio = 0;
   playedMusicId = 0;
@@ -29,7 +31,7 @@ export class DannysPainComponent implements OnInit {
         id: 3,
         address: '../../../assets/sounds/happy-music/happy-music3.mp3',
         min: 0,
-        max: 81
+        max: 141
       },
     ],
   ]
@@ -43,9 +45,6 @@ export class DannysPainComponent implements OnInit {
       this.isPause = false;
       this.secondOfAudio = 0;
       this.playedMusicId = id;
-      setInterval(() => {
-        this.secondOfAudio += 1;
-      }, 1000)
     } else {
       const audio = document.getElementById(`audio_${id}`)! as HTMLMediaElement;
       if (this.isPause) {
@@ -61,5 +60,9 @@ export class DannysPainComponent implements OnInit {
     const audio = document.getElementById(`audio_${id}`)! as HTMLMediaElement;
     audio.currentTime = event.target.value;
     this.secondOfAudio = event.target.value;
+  }
+  musicEnded() {
+    this.done.emit();
+    
   }
 }
