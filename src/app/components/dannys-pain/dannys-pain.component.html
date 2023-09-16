@@ -1,3 +1,51 @@
-<p>
-  dannys-pain works!
-</p>
+<swiper-container class="item-box">
+  <swiper-slide *ngFor="let musicGroup of musics">
+    <ion-grid mode="ios">
+      <ion-row *ngFor="let music of musicGroup">
+        <ion-col size="3">
+          <ion-button (click)="playOrPause(music.id)">
+            <ion-icon slot="icon-only" name="pause" *ngIf="playedMusicId === music.id && !isPause"></ion-icon>
+            <ion-icon slot="icon-only" name="play" *ngIf="playedMusicId !== music.id || isPause"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="9" *ngIf="playedMusicId === music.id">
+          <ion-range [min]="music.min" [max]="music.max" [id]="'range_'+music.id" [value]='secondOfAudio'
+          (ionKnobMoveEnd)="audioTimeChanged($event, music.id)"
+          labelPlacement="end" label="{{ secondOfAudio * (1000 ) | date:'mm:ss':'UTC' }}"
+          ></ion-range>
+        </ion-col>
+        <ion-col size="9" *ngIf="playedMusicId !== music.id">
+          <ion-range [min]="music.min" [max]="music.max" [id]="'range_'+music.id" [value]='0'
+          labelPlacement="end" label="00:00"
+          ></ion-range>
+        </ion-col>
+        <ion-col size="12">
+          <audio class="ion-hide" autoplay [id]="'audio_'+music.id" *ngIf="playedMusicId === music.id">
+            <source [src]="music.address">
+          </audio>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </swiper-slide>
+</swiper-container>
+
+<div id="cartoon" role="img" aria-labelledby="description">
+  <div class="body"></div>
+  <div class="ear"></div>
+  <div class="ear"></div>
+  <div class="neck"></div>
+  <app-dannys-hair1 class="hair1 hair1-back" [isHairBack]="true"></app-dannys-hair1>
+  <div class="face" id="face">
+    <div class="cheeks"></div>
+    <div class="eye">
+      <div class="pupil"></div>
+    </div>
+    <div class="eye">
+      <div class="pupil"></div>
+    </div>
+    <div class="mouth" [ngClass]="{'snail-animation': playedMusicId !== 0}"></div>
+    <div class="freckles"></div>
+    <div class="nose"></div>
+  </div>
+  <app-dannys-hair1 class="hair1" [isHairTop]="true"></app-dannys-hair1>
+</div>
