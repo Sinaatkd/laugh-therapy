@@ -140,37 +140,7 @@ export class DannysFoodComponent implements OnInit {
   changeSelectedFood() {
     if (this.eatenFoodsCount >= 3) {
       this.isHappyDanny = true;
-      const soundAddress = '../../../assets/sounds/sounds-effect/Win-Effect.mp3';
-      const audio = new Audio(soundAddress);
-      audio.play();
-      this.alertCtrl.create({
-        message: 'تو تونستی دنی رو خوشحال کنی 🥳🥳',
-        mode: 'ios',
-        backdropDismiss: false,
-        buttons: [
-          {
-            text: 'دوباره',
-            handler: () => {
-              this.resetGame();
-              audio.pause();
-            }
-          },
-          {
-            text: 'بازی بعدی',
-            handler: () => {
-              this.done.emit();
-              audio.pause();
-            }
-          },
-          {
-            text: 'بازگشت به صفحه اصلی',
-            handler: () => {
-              this.navCtrl.navigateBack('/home');
-              audio.pause();
-            }
-          }
-        ]
-      }).then(alertEl => alertEl.present());
+      this.done.emit();
     } else {
       this.selectedFood = this.choiceRandomFood();
       this.setShowDannysFoodHave();
