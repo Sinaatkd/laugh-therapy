@@ -39,6 +39,7 @@ export class DannysPainComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    new Audio('../../../assets/sounds/descriptions/dannys-pain.aac').play();
     this.increaseSecond();
   }
 
@@ -46,7 +47,6 @@ export class DannysPainComponent implements OnInit {
     if (this.isPause) return;
     setTimeout(() => {
       this.secondOfAudio += 1;
-      console.log(this.secondOfAudio);
       this.increaseSecond();
     }, 1000);
   }
@@ -77,6 +77,7 @@ export class DannysPainComponent implements OnInit {
     this.secondOfAudio = event.target.value;
   }
   musicEnded() {
+    this.isPause = true;
     this.done.emit();
   }
 }
