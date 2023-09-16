@@ -38,11 +38,25 @@ export class DannysPainComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.increaseSecond();
+  }
+
+  increaseSecond() {
+    if (this.isPause) return;
+    setTimeout(() => {
+      this.secondOfAudio += 1;
+      console.log(this.secondOfAudio);
+      this.increaseSecond();
+    }, 1000);
+  }
 
   playOrPause(id: number) {
     if (id !== this.playedMusicId) {
-      this.isPause = false;
+      if (this.isPause) {
+        this.isPause = false;
+        this.increaseSecond();
+      }
       this.secondOfAudio = 0;
       this.playedMusicId = id;
     } else {
@@ -50,6 +64,7 @@ export class DannysPainComponent implements OnInit {
       if (this.isPause) {
         this.isPause = false;
         audio.play()
+        this.increaseSecond();
       } else {
         this.isPause = true;
         audio.pause()
@@ -63,6 +78,5 @@ export class DannysPainComponent implements OnInit {
   }
   musicEnded() {
     this.done.emit();
-    
   }
 }

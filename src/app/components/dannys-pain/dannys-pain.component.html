@@ -21,6 +21,7 @@
         </ion-col>
         <ion-col size="12">
           <audio class="ion-hide" autoplay [id]="'audio_'+music.id" *ngIf="playedMusicId === music.id"
+          #audio
           (ended)="musicEnded()"
           >
             <source [src]="music.address">
