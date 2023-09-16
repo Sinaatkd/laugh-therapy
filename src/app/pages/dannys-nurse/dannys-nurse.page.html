@@ -1,3 +1,6 @@
 <ion-content [scrollY]="false" [scrollX]="false">
-  <app-change-character-style></app-change-character-style>
+  <app-change-dannys-style *ngIf="gameNumber === 1" (done)="done($event)"></app-change-dannys-style>
+  <app-tired-dannys *ngIf="gameNumber === 2" (done)="done($event)"></app-tired-dannys>
+  <app-dannys-food *ngIf="gameNumber === 3" (done)="done($event)"></app-dannys-food>
+  <app-dannys-pain *ngIf="gameNumber === 4" (done)="done($event)"></app-dannys-pain>
 </ion-content>
