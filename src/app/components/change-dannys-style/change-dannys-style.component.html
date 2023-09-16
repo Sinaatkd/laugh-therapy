@@ -1,21 +1,13 @@
 <ion-grid fixed class="item-box">
   <ion-row class="show-animation" *ngIf="!isSelectColorTurn">
-    <ion-col size="12" *ngIf="isHair1Selected || isHat1Selected || isHat2Selected" class="ion-justify-content-end">
+    <ion-col size="12" *ngIf="selectedItem != ''" class="ion-justify-content-end">
       <ion-button mode="ios" (click)="changeSelectColorTurn(true)">
         <ion-icon slot="icon-only" name="caret-forward-outline"></ion-icon>
       </ion-button>
     </ion-col>
-    <ion-col size="4">
-      <ion-img class="item" src="../../../assets/images/dannys-nurse/hair1.png" (touchstart)="hair1Touch($event)"
-        (touchend)="hair1Touch($event)" (touchmove)="hair1Touch($event)" id='hair1'></ion-img>
-    </ion-col>
-    <ion-col size="4">
-      <ion-img class="item" src="../../../assets/images/dannys-nurse/hat1.png" (touchstart)="hat1Touch($event)"
-        (touchend)="hat1Touch($event)" (touchmove)="hat1Touch($event)" id='hat1'></ion-img>
-    </ion-col>
-    <ion-col size="4">
-      <ion-img class="item" src="../../../assets/images/dannys-nurse/hat2.png" (touchstart)="hat2Touch($event)"
-        (touchend)="hat2Touch($event)" (touchmove)="hat2Touch($event)" id='hat2'></ion-img>
+    <ion-col size="4" *ngFor="let item of items">
+      <ion-img class="item" [src]="item.image" (touchstart)="itemTouch($event, item.elementId)"
+        (touchend)="itemTouch($event, item.elementId)" (touchmove)="itemTouch($event, item.elementId)" [id]='item.elementId'></ion-img>
     </ion-col>
   </ion-row>
   <ion-row class="show-animation" *ngIf="isSelectColorTurn">
@@ -41,7 +33,7 @@
   <div class="ear"></div>
   <div class="neck"></div>
   <app-dannys-hair1 class="show-animation hair1 hair1-back" [hairBackgroundColor]="selectedHairColor" [isHairBack]="true"
-    *ngIf="isHair1Selected"></app-dannys-hair1>
+    *ngIf="selectedItem == 'hair1'"></app-dannys-hair1>
   <div class="face" id="face">
     <div class="cheeks"></div>
     <div class="eye">
@@ -50,16 +42,16 @@
     <div class="eye">
       <div class="pupil"></div>
     </div>
-    <div class="mouth" [ngClass]="{'snail-animation': isHair1Selected || isHat1Selected || isHat2Selected}"></div>
+    <div class="mouth" [ngClass]="{'snail-animation': selectedItem != ''}"></div>
     <div class="freckles"></div>
     <div class="nose"></div>
   </div>
   <app-dannys-hair1 class="show-animation hair1" [hairBackgroundColor]="selectedHairColor" [isHairTop]="true"
-    *ngIf="isHair1Selected"></app-dannys-hair1>
+    *ngIf="selectedItem == 'hair1'"></app-dannys-hair1>
 
-  <app-dannys-hat1 class="show-animation" *ngIf="isHat1Selected"
+  <app-dannys-hat1 class="show-animation" *ngIf="selectedItem == 'hat1'"
     [hatBackgroundColor]="getHat1BackgroundImage()"></app-dannys-hat1>
-  <app-dannys-hat2 class="show-animation hat2" *ngIf="isHat2Selected"
+  <app-dannys-hat2 class="show-animation hat2" *ngIf="selectedItem == 'hat2'"
     [hatBackgroundColor]="selectedHairColor"></app-dannys-hat2>
 
 </div>
