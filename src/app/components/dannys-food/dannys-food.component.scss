@@ -86,12 +86,30 @@ swiper-container {
 	animation: eating-mode 0.1s ease forwards;
 }
 
+.snail-animation {
+	animation: snail-animation 1s ease forwards;
+}
+
+@keyframes snail-animation {
+	0% {
+		border-radius: 10%;
+		box-shadow: 0.2vmin 1.4vmin 0 -1vmin;
+
+	}
+
+	100% {
+		border-radius: 50%;
+		box-shadow: 0.2vmin 1.4vmin 0 -0.4vmin;
+	}
+}
+
 
 @keyframes eating-mode {
 	from {
 		border-radius: 10%;
 		box-shadow: 0.2vmin 1.4vmin 0 -1vmin;
 	}
+
 	to {
 		top: 73%;
 		border-radius: 50%;
@@ -291,6 +309,7 @@ ion-img {
 	animation: show-message-animation 5s ease forwards;
 
 }
+
 @keyframes show-message-animation {
 	0% {
 		opacity: 0;

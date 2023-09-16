@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class DannysFoodComponent implements OnInit {
 
   showDannysFoodHave = false;
+  eatenFoodsCount = 0;
+  isHappyDanny = false;
 
   foods = [
     {
@@ -117,6 +119,8 @@ export class DannysFoodComponent implements OnInit {
       if ((mouthTop - 50 < draggedFoodTop && draggedFoodTop < mouthTop + 50) && elementId === this.selectedFood.elementId) {
         this.playSoundEffect('../../../assets/sounds/laugh/laugh5.mp3');
         this.isEatingMode = false;
+        this.eatenFoodsCount += 1;
+        this.changeSelectedFood();
       }
       foodEl.style.transform = `translate(${foodInitialX}px, ${foodInitialY}px)`
     }
@@ -124,5 +128,15 @@ export class DannysFoodComponent implements OnInit {
 
   playSoundEffect(soundAddress: string) {
     new Audio(soundAddress).play();
+  }
+
+  changeSelectedFood() {
+    if (this.eatenFoodsCount >= 3) {
+      this.isHappyDanny = true;
+    } else {
+      this.selectedFood = this.choiceRandomFood();
+      this.setShowDannysFoodHave();
+      this.setShowDannysFoodHave();
+    }
   }
 }
