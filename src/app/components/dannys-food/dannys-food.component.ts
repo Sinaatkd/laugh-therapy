@@ -57,6 +57,7 @@ export class DannysFoodComponent implements OnInit {
   selectedFood = this.choiceRandomFood();
   foodOffsetX = 0;
   foodOffsetY = 0;
+  isEatingMode = false;
 
   constructor() { }
 
@@ -98,19 +99,30 @@ export class DannysFoodComponent implements OnInit {
       const newY = event.targetTouches[0].clientY - this.foodOffsetY
       foodEl.style.transform = `translate(${newX}px, ${newY}px)`
 
+      const mouth = document.getElementById('mouth');
+      const mouthTop = mouth!.getBoundingClientRect().top;
+      const draggedFoodTop = foodEl.getBoundingClientRect().top
+
+      if ((mouthTop - 50 < draggedFoodTop && draggedFoodTop < mouthTop + 50) && elementId === this.selectedFood.elementId) {
+        this.isEatingMode = true;
+      } else {
+        this.isEatingMode = false;
+      }
+
     } else if (event.type === 'touchend') {
       const mouth = document.getElementById('mouth');
       const mouthTop = mouth!.getBoundingClientRect().top;
       const draggedFoodTop = foodEl.getBoundingClientRect().top
 
-      if (mouthTop - 50 < draggedFoodTop && draggedFoodTop < mouthTop + 50) {
-        // this.playSoundEffect(this.laughSoundAddress);
-        if (elementId === this.selectedFood.elementId) {
-          console.log('eat');
-        }
-
+      if ((mouthTop - 50 < draggedFoodTop && draggedFoodTop < mouthTop + 50) && elementId === this.selectedFood.elementId) {
+        this.playSoundEffect('../../../assets/sounds/laugh/laugh5.mp3');
+        this.isEatingMode = false;
       }
       foodEl.style.transform = `translate(${foodInitialX}px, ${foodInitialY}px)`
     }
+  }
+
+  playSoundEffect(soundAddress: string) {
+    new Audio(soundAddress).play();
   }
 }

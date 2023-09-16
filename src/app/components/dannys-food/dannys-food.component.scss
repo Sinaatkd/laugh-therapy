@@ -80,8 +80,25 @@ swiper-container {
 	top: 68%;
 	left: 50%;
 	transform: translateX(-50%) rotate(5deg);
-	animation: snailMouth 1s ease forwards;
-	animation-iteration-count: 1;
+}
+
+.eating-mode-animation {
+	animation: eating-mode 0.1s ease forwards;
+}
+
+
+@keyframes eating-mode {
+	from {
+		border-radius: 10%;
+		box-shadow: 0.2vmin 1.4vmin 0 -1vmin;
+	}
+	to {
+		top: 73%;
+		border-radius: 50%;
+		box-shadow: none;
+		background: black;
+		transform: translateX(-50%) rotate(0);
+	}
 }
 
 .ear {
