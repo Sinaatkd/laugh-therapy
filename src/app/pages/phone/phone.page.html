@@ -10,8 +10,8 @@
   <ion-grid>
     <ion-row>
       <ion-col size="4" *ngFor="let key of keys">
-        <ion-button size="large" (click)="appendCharacter2Text(key)">
-          {{ key }}
+        <ion-button size="large" (click)="appendCharacter2Text(key.key)">
+          {{ key.key }}
         </ion-button>
       </ion-col>
     </ion-row>
