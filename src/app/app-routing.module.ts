@@ -18,9 +18,14 @@ const routes: Routes = [
   {
     path: 'destroy-bad-cell',
     loadChildren: () => import('./pages/destroy-bad-cell/destroy-bad-cell.module').then( m => m.DestroyBadCellPageModule)
-  },  {
+  },
+  {
     path: 'dannys-nurse',
     loadChildren: () => import('./pages/dannys-nurse/dannys-nurse.module').then( m => m.DannysNursePageModule)
+  },
+  {
+    path: 'phone',
+    loadChildren: () => import('./pages/phone/phone.module').then( m => m.PhonePageModule)
   },
 
 ];
