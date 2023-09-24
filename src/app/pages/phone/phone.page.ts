@@ -13,7 +13,7 @@ export class PhonePage implements OnInit {
 
   text = '';
   keys = ['3', '2', '1', '6', '5', '4', '9', '8', '7', '*', '0', '#']
-  
+
   constructor(
     @Inject(DOCUMENT) document: Document,
     private modalCtrl: ModalController,
@@ -22,6 +22,10 @@ export class PhonePage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.call()
+  }
+
+  call() {
     setTimeout(() => {
       this.openCallModal();
     }, 6000);
@@ -45,6 +49,11 @@ export class PhonePage implements OnInit {
   openCallModal() {
     this.modalCtrl.create({
       component: CallComponent,
-    }).then(modalEl => modalEl.present());
+    }).then(modalEl => {
+      modalEl.present();
+      modalEl.onDidDismiss().then(() => {
+        this.call();
+      })
+    });
   }
 }

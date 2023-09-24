@@ -13,6 +13,7 @@ import { DannysHair1Component } from './dannys-hair1/dannys-hair1.component';
 import { TiredDannysComponent } from './tired-dannys/tired-dannys.component';
 import { DannysFoodComponent } from './dannys-food/dannys-food.component';
 import { DannysPainComponent } from './dannys-pain/dannys-pain.component';
+import { CallComponent } from './call/call.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { DannysPainComponent } from './dannys-pain/dannys-pain.component';
     DannysHair1Component,
     TiredDannysComponent,
     DannysFoodComponent,
-    DannysPainComponent
+    DannysPainComponent,
+    CallComponent,
   ],
   exports: [
     ToolbarComponent,

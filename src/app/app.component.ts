@@ -10,6 +10,6 @@ export class AppComponent {
   constructor(
     @Inject(DOCUMENT) private document: Document 
   ) {
-    // this.document.dir = 'rtl';
+    this.document.dir = 'rtl';
   }
 }

@@ -1,7 +1,20 @@
-ion-footer {
-    background: var(--ion-color-light);
-    background-color: var(--ion-color-light);
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--ion-color-light)  url('../../../assets/images/phone/call-background.png')  no-repeat center center / cover;
+    filter: blur(5px);
+    -webkit-filter: blur(5px); 
 }
+
+ion-content {
+    --background: none
+}
+
+// ion-footer {
+//     background: var(--ion-color-light);
+//     background-color: var(--ion-color-light);
+// }
 
 ion-col {
     display: flex;

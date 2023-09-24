@@ -1,0 +1,74 @@
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--ion-color-light)  url('../../../assets/images/phone/call-background.png')  no-repeat center center / cover;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+.container {
+    // background: var(--ion-color-light);
+    width: 100%;
+    height: 100%;
+}
+
+ion-img {
+    background: var(--ion-color-white);
+    margin-top: 20px;
+    padding: 10px;
+    border: solid 2px var(--ion-color-primary);
+    border-radius: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+}
+
+ion-text {
+    padding: 10px;
+    background: var(--ion-color-white);
+    border: solid 2px var(--ion-color-primary);
+    border-radius: 10px;
+}
+
+ion-col {
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-position {
+    position: absolute;
+    top: 60%;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.ion-fab-button-large {
+    width: 75px;
+    height: 75px;
+}
+
+.rotate-animation {
+    animation: rotate-animation 0.3s ease infinite;
+}
+
+@keyframes rotate-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
