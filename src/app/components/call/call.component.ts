@@ -101,10 +101,10 @@ export class CallComponent implements OnInit {
 
 
     } else if (event.type === 'touchend') {
-      if (answerButton.getBoundingClientRect().x + 10 > rect.x) {
+      if (answerButton.getBoundingClientRect().x + 30 > rect.x) {
         this.status = 'answer';
       }
-      if (rejectButton.getBoundingClientRect().x - 10 < rect.x) {
+      if (rejectButton.getBoundingClientRect().x - 30 < rect.x) {
         this.status = 'reject';
         this.modalCtrl.dismiss().then();
       }
