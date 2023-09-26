@@ -25,7 +25,7 @@ import {
 )
 export class PhonePage implements OnInit {
 
-
+  isViewDidLeaveCalled = false;
   text = '';
   keys = [
     {
@@ -90,18 +90,22 @@ export class PhonePage implements OnInit {
     this.call()
   }
 
-
   call() {
+    console.log('called');
+    
     setTimeout(() => {
-      this.openCallModal();
+      if (!this.isViewDidLeaveCalled) {
+        this.openCallModal();
+      }
     }
-      ,
-      6000);
+    ,
+    6000);
   }
-
-
+  
+  
   ionViewDidLeave() {
     document.dir = 'rtl';
+    this.isViewDidLeaveCalled = true;
   }
 
 
