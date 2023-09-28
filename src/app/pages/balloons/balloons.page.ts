@@ -94,7 +94,7 @@ export class BalloonsPage implements OnInit {
     const winModal = await this.modalCtrl.create({
       component: BalloonWinComponent,
       breakpoints: [0.4, 0.5, 0.6, 0.7],
-      initialBreakpoint: 0.4,
+      initialBreakpoint: 0.7,
       backdropDismiss: false,
       mode: 'ios',
       componentProps: {
