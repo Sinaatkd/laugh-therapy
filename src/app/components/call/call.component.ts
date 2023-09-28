@@ -102,11 +102,11 @@ export class CallComponent implements OnInit {
 
     } else if (event.type === 'touchend') {
       if (answerButton.getBoundingClientRect().x + 30 > rect.x) {
-        this.status = 'answer';
+        this.changeStatus('answer');
       }
       if (rejectButton.getBoundingClientRect().x - 30 < rect.x) {
-        this.status = 'reject';
-        this.modalCtrl.dismiss().then();
+        this.changeStatus('reject');
+        this.dismissCall();
       }
       El.style.transform = `translateX(${initialX}px)`
     }
@@ -129,5 +129,12 @@ export class CallComponent implements OnInit {
 
   musicEnded() {
     this.modalCtrl.dismiss().then();
+  }
+
+  changeStatus(newStatus: 'unknown' | 'answer' | 'reject') {
+    this.status = newStatus;
+    if (newStatus === 'reject') {
+      this.dismissCall();
+    }
   }
 }

@@ -91,8 +91,6 @@ export class PhonePage implements OnInit {
   }
 
   call() {
-    console.log('called');
-    
     setTimeout(() => {
       if (!this.isViewDidLeaveCalled) {
         this.openCallModal();
